@@ -1,0 +1,18 @@
+.header_wrapper{
+    background: #2A2A2A;
+    height: 50px;
+    position: fixed;
+    float: left;
+    width: 100%;
+    z-index: 100;
+}
+.header_wrapper span.logo_title{
+    color: #fff;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.content_wrapper{
+    padding-top: 50px;
+}
