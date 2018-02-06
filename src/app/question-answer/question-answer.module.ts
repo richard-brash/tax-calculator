@@ -9,6 +9,9 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 
 import { StatesResolve } from '../shared/resolve/states';
 
+// Add the SecureHttpClient to this modules (Injectable)
+import {SecureHttpClient} from '../shared/secure-http-client';
+
 import { QuestionAnswerComponent } from './question-answer.component';
 import { QuestionAnswerRoutingModule } from './question-answer-routing.module';
 import { QuestionAnswerService } from './question-answer.service';
@@ -31,7 +34,8 @@ import { QuestionAnswerService } from './question-answer.service';
   providers: [
     HttpClient,
     StatesResolve,
-    QuestionAnswerService
+    QuestionAnswerService,
+    SecureHttpClient
   ]
 })
 export class QuestionAnswerModule {
