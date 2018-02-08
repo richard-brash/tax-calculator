@@ -1,3 +1,196 @@
+<form-wizard>
+  <wizard-step [title]="'Personal Details'" [isValid]="personalForm.form.valid" (onNext)="onStep1Next($event)">
+    <h3>Personal Details</h3>
+    <form #personalForm="ngForm">
+      <div class="new-dollar">
+        <div class="top-table">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>
+                  <label class="label-css">First Name</label>
+                  <div class="input-wrap">
+                    <input type="text" [(ngModel)]="qa.firstName" class="input-css" name="firstName" #firstName="ngModel" required/>
+                  </div>
+                </td>
+                <td>
+                  <label class="label-css">Last Name</label>
+                  <div class="input-wrap">
+                    <input type="text" [(ngModel)]="qa.lastName" class="input-css" name="lastName" #lastName="ngModel" required/>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="label-css">Filling Status</label>
+                  <div class="select-wrap">
+                    <p-dropdown [options]="statusOptions" [(ngModel)]="qa.status" placeholder="Select Status" optionLabel="name" name="status"
+                      #status="ngModel" required="true"></p-dropdown>
+                  </div>
+                </td>
+                <td>
+                  <label class="label-css">State</label>
+                  <div class="select-wrap">
+                    <p-dropdown [options]="stateOptions" [(ngModel)]="qa.state" placeholder="Select State" optionLabel="name" name="state" #state="ngModel"
+                      required="true"></p-dropdown>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="label-css">What is your taxable income?</label>
+                  <div class="input-wrap">
+                    <input type="text" [(ngModel)]="qa.taxableIncome" class="input-css" name="taxableIncome" #taxableIncome="ngModel" required/>
+                  </div>
+                </td>
+                <td>
+                  <label class="label-css">Do you currently own a business? </label>
+                  <div class="select-wrap">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.ownBusiness" name="ownBusiness" #ownBusiness="ngModel"></p-inputSwitch>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </form>
+  </wizard-step>
+  <wizard-step [title]="'Business Ownership Questions'" [hidden]="!qa.ownBusiness" (onNext)="onStep2Next($event)">
+    <h3>Business Ownership Questions</h3>
+    <form #businessForm="ngForm">
+      <div class="new-dollar">
+        <div class="top-table">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>
+                  <label class="label-css">Are you and/or your spouse the sole owner(s) of the business?</label>
+                  <div class="select-wrap">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.soleOwner" name="soleOwner" #soleOwner="ngModel"></p-inputSwitch>
+                  </div>
+                </td>
+                <td>
+                  <div *ngIf="!qa.soleOwner">
+                    <label class="label-css">What is the percentage of ownership?</label>
+                    <div class="select-wrap">
+                      <p-dropdown [options]="ownPercentageOptions" [(ngModel)]="qa.ownPercentage" placeholder="Select Percentage" name="ownPercentage"
+                        #ownPercentage="ngModel" required="true"></p-dropdown>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <label class="label-css">What type of business are you in?</label>
+                    <div class="input-wrap">
+                      <input type="text" [(ngModel)]="qa.typeOfBusiness" class="input-css" name="typeOfBusiness" #typeOfBusiness="ngModel" required/>
+                    </div>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="label-css">How many children do you claim on your tax return?</label>
+                  <div class="input-wrap">
+                    <p-spinner size="30" [(ngModel)]="qa.childToClaim" [min]="0" [max]="6" name="childToClaim" #childToClaim="ngModel"></p-spinner>
+                  </div>
+                </td>
+                <td>
+                  <div *ngIf="qa.childToClaim > 0">
+                    <label class="label-css">Can your children work in your business?</label>
+                    <div class="select-wrap">
+                      <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.childWork" name="childWork" #childWork="ngModel"></p-inputSwitch>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="label-css">How much do you spend on domestic vacations annually?</label>
+                  <div class="input-wrap">
+                    <input type="text" [(ngModel)]="qa.domesticVacAmount" class="input-css" name="domesticVacAmount" #domesticVacAmount="ngModel"
+                      required/>
+                  </div>
+                </td>
+                <td>
+                  <label class="label-css">Do you have a health savings account?</label>
+                  <div class="select-wrap">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.savingAccount" name="savingAccount" #savingAccount="ngModel"></p-inputSwitch>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="label-css">Do you have a home office?</label>
+                  <div class="select-wrap">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.homeOffice" name="homeOffice" #homeOffice="ngModel"></p-inputSwitch>
+                  </div>
+                </td>
+                <td>
+                  <label class="label-css">Do you have a company wide retirement plan?</label>
+                  <div class="select-wrap">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.retirement" name="retirement" #retirement="ngModel"></p-inputSwitch>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="label-css">Have you purchased a building other than a personal residence or vacation home in the last 5 years?</label>
+                  <div class="select-wrap">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.buildingPurchased" name="buildingPurchased" #buildingPurchased="ngModel"></p-inputSwitch>
+                  </div>
+                </td>
+                <td>
+                  <label *ngIf="qa.buildingPurchased" class="label-css">Estimated cost</label>
+                  <div *ngIf="qa.buildingPurchased" class="input-wrap">
+                    <input type="text" [(ngModel)]="qa.estimatedCost" class="input-css" name="estimatedCost" #estimatedCost="ngModel" required/>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="label-css">Are you current on your tax obligations including filing and payments?</label>
+                  <div class="select-wrap">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.taxObligations" name="taxObligations" #taxObligations="ngModel"></p-inputSwitch>
+                  </div>
+                </td>
+                <td>
+                  <label class="label-css">How are you keeping your books?</label>
+                  <div class="select-wrap">
+                    <p-dropdown [options]="keepBooksOptions" [(ngModel)]="qa.keepBook" placeholder="Select" name="keepBook" #keepBook="ngModel"
+                      required="true"></p-dropdown>
+                  </div>
+              </tr>
+              <tr>
+                <td>
+                  <label class="label-css">Are your books current?</label>
+                  <div class="select-wrap">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.booksCurrent" name="booksCurrent" #booksCurrent="ngModel"></p-inputSwitch>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </form>
+  </wizard-step>
+  <wizard-step [title]="'Extra Question'" (onComplete)="onComplete($event)">
+    <div [ngSwitch]="isCompleted">
+      <div *ngSwitchDefault>
+        <h1>Step4</h1>
+      </div>
+      <div *ngSwitchCase="true">
+        <h4>Thank you! You have completed all the steps.</h4>
+      </div>
+    </div>
+  </wizard-step>
+</form-wizard>
+<!--
 <form (ngSubmit)="invoice(cashSaleForm)" #cashSaleForm="ngForm">
   <div class="new-dollar">
     <div class="top-table">
@@ -6,6 +199,11 @@
           <tr>
             <td colspan="2">
               <h3 class="text-center">Questions to calculate Tax</h3>
+            </td>
+          </tr>
+          <tr class="section_row">
+            <td colspan="2">
+              <p class="section_heading">Personal Detail</p>
             </td>
           </tr>
           <tr>
@@ -50,6 +248,11 @@
                 <p-dropdown [options]="stateOptions" [(ngModel)]="qa.state" placeholder="Select State" optionLabel="name" name="state" #state="ngModel"
                   required="true"></p-dropdown>
               </div>
+            </td>
+          </tr>
+          <tr class="section_row">
+            <td colspan="2">
+              <p class="section_heading">Business Detail</p>
             </td>
           </tr>
           <tr>
@@ -184,3 +387,4 @@
     </div>
   </div>
 </form>
+-->

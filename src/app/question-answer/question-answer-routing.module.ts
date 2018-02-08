@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { QuestionAnswerComponent } from './question-answer.component';
-import { StatesResolve } from '../shared/resolve/states';
+import { StatesResolve, SalePersonsResolve } from '../shared/resolve';
 
 @NgModule({
   imports: [
@@ -10,7 +10,8 @@ import { StatesResolve } from '../shared/resolve/states';
         path: '',
         component: QuestionAnswerComponent,
         resolve:{
-          states : StatesResolve
+          states : StatesResolve,
+          // salePersons : SalePersonsResolve
         }
       }
     ])

@@ -12,7 +12,7 @@ button:focus{outline-offset:0; outline:0;}
 .new-dollar h2{margin:0 0 20px;padding:5px;display:block;text-align:center; background:#5b9bd5;line-height:30px;font-size:20px;color:#fff;font-weight:900;text-transform:uppercase;font-family:'Roboto';}
 .new-dollar h2 span{font-weight:300;}
 .top-table{display:block;border:1px solid #ededed;margin:0 3px 35px;}
-.top-table table.table{margin:0;}
+.top-table table.table{margin:0; width: 100%;}
 .top-table table.table tbody tr:nth-child(2n+2){background:#f5f5f5;}
 .top-table table.table thead th,
 .top-table table.table tbody td{border-bottom:1px solid #ededed;width:33.33%;padding:5px; border-top:0;}
@@ -122,3 +122,36 @@ table.table{background: transparent !important;}
 .ui-state-disabled, .ui-widget:disabled{cursor: not-allowed !important;}
 .form-error{padding-left: 30%; margin-left: 10px; color: red; font-size: 13px;}
 .btm-table table.table tbody td .ui-dropdown-label{text-align: left !important;}
+.top-table table.table tbody tr.section_row{
+    background: #1f89ce;
+}
+p.section_heading {
+    color: #fff;
+    font-size: 18px;
+    padding-left: 10px;
+    text-transform: uppercase;
+}
+
+/*CSS for stepper*/
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+.card-block {
+    overflow-y: auto;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+/*CSS for stepper*/
