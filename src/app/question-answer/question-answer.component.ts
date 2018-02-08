@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 export class QuestionAnswerComponent implements OnInit {
 
   qa;
-  data = {};
   statusOptions = [
     { id: 'S', name: 'Single' },
     { id: 'MFJ', name: 'Married filing joint' },
@@ -54,10 +53,11 @@ export class QuestionAnswerComponent implements OnInit {
     this.qa = {};
     this.stateOptions = this.route.snapshot.data['states'];
     this.salePersons = this.route.snapshot.data['salePersons'].Data;
-    console.log(this.salePersons);
   }
 
   ngOnInit() {
   }
-
+  onStep3Next(){
+    console.log('here = ',this.qa);
+  }
 }

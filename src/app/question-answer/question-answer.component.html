@@ -1,5 +1,5 @@
 <form-wizard>
-  <wizard-step [title]="'Personal Details'" [isValid]="personalForm.form.valid" (onNext)="onStep1Next($event)">
+  <wizard-step [title]="'Personal Details'" [isValid]="personalForm.form.valid">
     <h3>Personal Details</h3>
     <form #personalForm="ngForm">
       <div class="new-dollar">
@@ -10,13 +10,13 @@
                 <td>
                   <label class="label-css">First Name</label>
                   <div class="input-wrap">
-                    <input type="text" [(ngModel)]="qa.firstName" class="input-css" name="firstName" #firstName="ngModel" required/>
+                    <input type="text" [(ngModel)]="qa.FirstName" class="input-css" name="firstName" #firstName="ngModel" required/>
                   </div>
                 </td>
                 <td>
                   <label class="label-css">Last Name</label>
                   <div class="input-wrap">
-                    <input type="text" [(ngModel)]="qa.lastName" class="input-css" name="lastName" #lastName="ngModel" required/>
+                    <input type="text" [(ngModel)]="qa.LastName" class="input-css" name="lastName" #lastName="ngModel" required/>
                   </div>
                 </td>
               </tr>
@@ -56,7 +56,7 @@
       </div>
     </form>
   </wizard-step>
-  <wizard-step [title]="'Business Ownership Questions'" [hidden]="!qa.ownBusiness" (onNext)="onStep2Next($event)">
+  <wizard-step [title]="'Business Ownership Questions'" [hidden]="!qa.ownBusiness" [isValid]="businessForm.form.valid">
     <h3>Business Ownership Questions</h3>
     <form #businessForm="ngForm">
       <div class="new-dollar">
@@ -95,7 +95,7 @@
                 <td>
                   <label class="label-css">How many children do you claim on your tax return?</label>
                   <div class="input-wrap">
-                    <p-spinner size="30" [(ngModel)]="qa.childToClaim" [min]="0" [max]="6" name="childToClaim" #childToClaim="ngModel"></p-spinner>
+                    <p-spinner size="30" [(ngModel)]="qa.childToClaim" [min]="0" [max]="6" name="childToClaim" #childToClaim="ngModel" require="true"></p-spinner>
                   </div>
                 </td>
                 <td>
@@ -179,7 +179,42 @@
       </div>
     </form>
   </wizard-step>
-  <wizard-step [title]="'Extra Question'" (onComplete)="onComplete($event)">
+  <wizard-step [title]="'Extra Questions'" [isValid]="extraForm.form.valid" (onComplete)="onStep3Next($event)">
+    <h3>Extra Questions</h3>
+    <form #extraForm="ngForm">
+      <div class="new-dollar">
+        <div class="top-table">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>
+                  <label class="label-css">Do you have life insurance?</label>
+                  <div class="select-wrap">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.lifeInsurance" name="lifeInsurance" #lifeInsurance="ngModel" require="true"></p-inputSwitch>
+                  </div>
+                </td>
+                <td>
+                  <label class="label-css">Do you have a living trust?</label>
+                  <div class="select-wrap">
+                    <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.livingTrust" name="livingTrust" #livingTrust="ngModel" require="true"></p-inputSwitch>
+                  </div>
+                </td>
+                <tr>
+                  <td>
+                    <label class="label-css">Do you have a will?</label>
+                    <div class="select-wrap">
+                      <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.haveWill" name="haveWill" #haveWill="ngModel" require="true"></p-inputSwitch>
+                    </div>
+                  </td>
+                  <td></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </form>
+  </wizard-step>
+  <!-- <wizard-step [title]="'Extra Question'" (onComplete)="onComplete($event)">
     <div [ngSwitch]="isCompleted">
       <div *ngSwitchDefault>
         <h1>Step4</h1>
@@ -188,7 +223,7 @@
         <h4>Thank you! You have completed all the steps.</h4>
       </div>
     </div>
-  </wizard-step>
+  </wizard-step> -->
 </form-wizard>
 <!--
 <form (ngSubmit)="invoice(cashSaleForm)" #cashSaleForm="ngForm">
