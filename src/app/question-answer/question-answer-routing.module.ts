@@ -11,7 +11,7 @@ import { StatesResolve, SalePersonsResolve } from '../shared/resolve';
         component: QuestionAnswerComponent,
         resolve:{
           states : StatesResolve,
-          // salePersons : SalePersonsResolve
+          salePersons : SalePersonsResolve
         }
       }
     ])

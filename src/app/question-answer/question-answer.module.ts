@@ -10,6 +10,9 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 
 import { StatesResolve, SalePersonsResolve } from '../shared/resolve';
 
+// Add the SecureHttpClient to this modules (Injectable)
+import {SecureHttpClient} from '../shared/secure-http-client';
+
 import { QuestionAnswerComponent } from './question-answer.component';
 import { QuestionAnswerRoutingModule } from './question-answer-routing.module';
 import { QuestionAnswerService } from './question-answer.service';
@@ -34,7 +37,8 @@ import { QuestionAnswerService } from './question-answer.service';
     HttpClient,
     StatesResolve,
     SalePersonsResolve,
-    QuestionAnswerService
+    QuestionAnswerService,
+    SecureHttpClient
   ]
 })
 export class QuestionAnswerModule {

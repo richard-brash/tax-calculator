@@ -47,12 +47,14 @@ export class QuestionAnswerComponent implements OnInit {
   ];
   stateOptions;
   salePersons;
+
   constructor(
-    private route: ActivatedRoute
-  ) { 
+    private route: ActivatedRoute,
+  ) {
     this.qa = {};
     this.stateOptions = this.route.snapshot.data['states'];
-    this.salePersons = this.route.snapshot.data['salePersons'];
+    this.salePersons = this.route.snapshot.data['salePersons'].Data;
+    console.log(this.salePersons);
   }
 
   ngOnInit() {

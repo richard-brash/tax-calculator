@@ -8,6 +8,7 @@ export class SalePersonsResolve implements Resolve<any> {
     constructor(private questionAnswerService: QuestionAnswerService) { }
 
     resolve(route: ActivatedRouteSnapshot) {
-        return this.questionAnswerService.getSalePersons();
+        return this.questionAnswerService.getSalesPeople();
+        // return this.questionAnswerService.getSalePersons();
     }
 }
