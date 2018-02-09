@@ -72,6 +72,20 @@
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._BusinessOwner" name="BusinessOwner" #BusinessOwner="ngModel"></p-inputSwitch>
               </div>
             </div>
+            <div class="clearfix"></div>
+            <div class="form-group-wrap">
+              <label class="label">Who invited you to take this survey?</label>
+              <div class="select-wrap">
+                <p-dropdown [options]="salePersons" optionLabel="FullName" [(ngModel)]="qa._SalePerson" placeholder="Select the Person"
+                  name="SalePerson" #SalePerson="ngModel" required="false">
+                </p-dropdown>
+              </div>
+              <!-- <div *ngIf="SalePerson.invalid">
+                <div class="error-alert" *ngIf="SalePerson.errors.required">
+                  Select sale person.
+                </div>
+              </div> -->
+            </div>            
           </div>
         </div>
       </div>
@@ -228,32 +242,20 @@
         <div class="top-table-form">
           <div class="detils-form">
             <div class="form-group-wrap">
-              <label class="label">Sale Person</label>
-              <div class="select-wrap">
-                <p-dropdown [options]="salePersons" optionLabel="FirstName" [(ngModel)]="qa._SalePerson" placeholder="Select Sale Person"
-                  name="SalePerson" #SalePerson="ngModel" required="true">
-                </p-dropdown>
-              </div>
-              <div *ngIf="SalePerson.invalid">
-                <div class="error-alert" *ngIf="SalePerson.errors.required">
-                  Select sale person.
-                </div>
-              </div>
-            </div>
-            <div class="form-group-wrap">
               <label class="label">Do you have life insurance?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._LifeInsurance" name="LifeInsurance" #LifeInsurance="ngModel"
                   require="true"></p-inputSwitch>
               </div>
             </div>
-            <div class="clearfix"></div>
             <div class="form-group-wrap">
               <label class="label">Do you have a living trust?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._LivingTrust" name="LivingTrust" #LivingTrust="ngModel" require="true"></p-inputSwitch>
               </div>
-            </div>
+            </div>            
+            <div class="clearfix"></div>
+
             <div class="form-group-wrap">
               <label class="label">Do you have a will?</label>
               <div class="select-wrap">

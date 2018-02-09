@@ -9,9 +9,9 @@ import { StatesResolve, SalePersonsResolve } from '../shared/resolve';
       {
         path: '',
         component: QuestionAnswerComponent,
-        resolve:{
-          states : StatesResolve,
-          salePersons : SalePersonsResolve
+        resolve: {
+          // states : StatesResolve,
+          // salePersons : SalePersonsResolve
         }
       }
     ])

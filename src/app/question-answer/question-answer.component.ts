@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControlName } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataSharingService } from "../shared/data-sharing";
+import { DataSharingService } from '../shared/data-sharing';
+import { QuestionAnswerService } from './question-answer.service';
 
 @Component({
   selector: 'app-question-answer',
@@ -12,6 +13,7 @@ export class QuestionAnswerComponent implements OnInit {
 
   qa;
   jsonStr = '{"_TaxableIncome":1000,"_BusinessOwner":false,"_SoleOwner":false,"_PercentOwnership":"05","_NumberOfChildren":0,"_ChildrenWorkInBusiness":false,"_VacationAmount":0,"_HSA":false,"_HomeOffice":false,"_BuildingPurchase":false,"_BuildingCost":0,"_CompanyRetirementPlan":false,"_CurrentOnTaxes":false,"_BooksCurrent":false,"_LifeInsurance":true,"_LivingTrust":false,"_HaveWill":false,"_SalePerson":{"Id":4,"FirstName":"Drew","LastName":"Miles"},"FirstName":"p","LastName":"p","_FilingStatus":{"id":"S","name":"Single"},"State":{"code":"AL","name":"Alabama (AL)"}}';
+
   statusOptions = [
     { id: 'S', name: 'Single' },
     { id: 'MFJ', name: 'Married filing joint' },
@@ -52,7 +54,8 @@ export class QuestionAnswerComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private dataSharing: DataSharingService
+    private dataSharing: DataSharingService,
+    private questionAnswerService: QuestionAnswerService
   ) {
     this.qa = {
       '_TaxableIncome': 0,
@@ -72,20 +75,45 @@ export class QuestionAnswerComponent implements OnInit {
       '_LifeInsurance': false,
       '_LivingTrust': false,
       '_HaveWill': false,
-      '_SalePerson' : ''
+      '_SalePerson': ''
     };
-    this.stateOptions = this.route.snapshot.data['states'];
-    this.salePersons = this.route.snapshot.data['salePersons'].Data;
+    // this.stateOptions = this.route.snapshot.data['states'];
+    // this.salePersons = this.route.snapshot.data['salePersons'].Data;
   }
 
   ngOnInit() {
+    this.questionAnswerService.getStates().subscribe(data => this.stateOptions = data);
+
+    this.questionAnswerService.getSalesPeople().then(data => {
+
+    //   {
+    //     ID: 0,
+    //     FirstName: '',
+    //     LastName: '',
+    //     FullName: 'None Selected'
+    // }      
+      let sps = [];
+      data.Data.forEach(salePerson => {
+        sps.push(
+          {
+            ID: salePerson.ID,
+            FirstName: salePerson.FirstName,
+            LastName: salePerson.LastName,
+            FullName: salePerson.FirstName + ' ' + salePerson.LastName
+          }
+        );
+      });
+      this.salePersons = sps;
+    });
+    // this.salePersons = this.route.snapshot.data['salePersons'].Data;
   }
+
   onStep3Next() {
-    this.qa['_FilingStatus'] = this.qa['_FilingStatus']['name'];
+    this.qa['_FilingStatus'] = this.qa['_FilingStatus']['id'];
     this.qa['State'] = this.qa['State']['code'];
     this.jsonStr = JSON.stringify(this.qa);
-    this.jsonStr = this.jsonStr.replace(/false/g,'"No"');
-    this.jsonStr = this.jsonStr.replace(/true/g,'"Yes"');
+    this.jsonStr = this.jsonStr.replace(/false/g, '"No"');
+    this.jsonStr = this.jsonStr.replace(/true/g, '"Yes"');
     this.dataSharing.changeMessage(this.jsonStr);
     this.router.navigate(['/result']);
   }

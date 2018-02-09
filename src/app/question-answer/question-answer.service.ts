@@ -13,15 +13,15 @@ export class QuestionAnswerService {
     getStates() {
         return this.httpClient.get('/assets/json/statesObj.json');
     }
-    getSalePersons() {
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Authorization': 'Basic ' + btoa('keyAuthorize:MyK3yC0d3')
-            })
-          };
-          console.log(httpOptions)
-        return this.httpClient.get('https://rbm-tsp.azurewebsites.net/getstarted/salespeople', httpOptions);
-    }
+    // getSalePersons() {
+    //     const httpOptions = {
+    //         headers: new HttpHeaders({
+    //           'Authorization': 'Basic ' + btoa('keyAuthorize:MyK3yC0d3')
+    //         })
+    //       };
+    //       console.log(httpOptions);
+    //     return this.httpClient.get('https://rbm-tsp.azurewebsites.net/getstarted/salespeople', httpOptions);
+    // }
 
     calculateTax(data) {
         const url = 'https://rbm-tsp-calculator-api.azurewebsites.net/api/calculate';

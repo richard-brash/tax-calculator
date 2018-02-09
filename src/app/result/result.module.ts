@@ -16,10 +16,10 @@ import { resultRoutes } from './result-routing.module';
   ],
   declarations: [ResultComponent],
   exports: [ResultComponent],
-  providers:[
+  providers: [
     CalculateResolve,
     DataSharingService,
-    QuestionAnswerService    
+    QuestionAnswerService
   ]
 })
 export class ResultModule { }
