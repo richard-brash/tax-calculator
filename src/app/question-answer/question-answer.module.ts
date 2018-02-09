@@ -9,6 +9,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { KeyFilterModule } from 'primeng/keyfilter';
 
 import { StatesResolve, SalePersonsResolve } from '../shared/resolve';
+import { DataSharingService } from '../shared/data-sharing';
 
 // Add the SecureHttpClient to this modules (Injectable)
 import {SecureHttpClient} from '../shared/secure-http-client';
@@ -38,6 +39,7 @@ import { QuestionAnswerService } from './question-answer.service';
     StatesResolve,
     SalePersonsResolve,
     QuestionAnswerService,
+    DataSharingService,
     SecureHttpClient
   ]
 })

@@ -13,6 +13,10 @@
     top: 50%;
     transform: translateY(-50%);
 }
+.header_wrapper span.logo_title a{
+    color: inherit;
+    text-decoration: none;
+}
 .content_wrapper{
     padding-top: 50px;
 }

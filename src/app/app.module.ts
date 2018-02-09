@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { QuestionAnswerModule } from './question-answer/question-answer.module';
+import { ResultModule } from './result/result.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { QuestionAnswerModule } from './question-answer/question-answer.module';
     HttpClientModule,
     HttpModule,
     AppRoutingModule,
-    QuestionAnswerModule
+    QuestionAnswerModule,
+    ResultModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -23,7 +23,14 @@ export class QuestionAnswerService {
         return this.httpClient.get('https://rbm-tsp.azurewebsites.net/getstarted/salespeople', httpOptions);
     }
 
-    //  This call returns a promise from SecureHttpClient
+    calculateTax(data) {
+        const url = 'https://rbm-tsp-calculator-api.azurewebsites.net/api/calculate';
+        return this.secureHttpClient.post(url, data)
+            .toPromise()
+            .then(res => res.json() )
+            .catch(this.handleError);
+    }
+
     getSalesPeople() {
         const url = 'https://rbm-tsp-calculator-api.azurewebsites.net/api/salespeople';
         return this.secureHttpClient.get(url)
