@@ -12,8 +12,7 @@ import { QuestionAnswerService } from './question-answer.service';
 export class QuestionAnswerComponent implements OnInit {
 
   qa;
-  jsonStr = '{"_TaxableIncome":1000,"_BusinessOwner":false,"_SoleOwner":false,"_PercentOwnership":"05","_NumberOfChildren":0,"_ChildrenWorkInBusiness":false,"_VacationAmount":0,"_HSA":false,"_HomeOffice":false,"_BuildingPurchase":false,"_BuildingCost":0,"_CompanyRetirementPlan":false,"_CurrentOnTaxes":false,"_BooksCurrent":false,"_LifeInsurance":true,"_LivingTrust":false,"_HaveWill":false,"_SalePerson":{"Id":4,"FirstName":"Drew","LastName":"Miles"},"FirstName":"p","LastName":"p","_FilingStatus":{"id":"S","name":"Single"},"State":{"code":"AL","name":"Alabama (AL)"}}';
-
+  jsonStr;
   statusOptions = [
     { id: 'S', name: 'Single' },
     { id: 'MFJ', name: 'Married filing joint' },
@@ -85,13 +84,6 @@ export class QuestionAnswerComponent implements OnInit {
     this.questionAnswerService.getStates().subscribe(data => this.stateOptions = data);
 
     this.questionAnswerService.getSalesPeople().then(data => {
-
-    //   {
-    //     ID: 0,
-    //     FirstName: '',
-    //     LastName: '',
-    //     FullName: 'None Selected'
-    // }      
       let sps = [];
       data.Data.forEach(salePerson => {
         sps.push(
@@ -105,7 +97,6 @@ export class QuestionAnswerComponent implements OnInit {
       });
       this.salePersons = sps;
     });
-    // this.salePersons = this.route.snapshot.data['salePersons'].Data;
   }
 
   onStep3Next() {

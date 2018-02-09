@@ -30,7 +30,6 @@ export class ResultComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
   ) {
-    console.log('calculatedResponse = ', this.route.snapshot.data['calculatedResponse']);
     this.result = this.route.snapshot.data['calculatedResponse'];
    }
 

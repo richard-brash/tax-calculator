@@ -8,7 +8,7 @@ import { FormWizardModule } from 'angular2-wizard';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { KeyFilterModule } from 'primeng/keyfilter';
 
-import { StatesResolve, SalePersonsResolve } from '../shared/resolve';
+//import { StatesResolve, SalePersonsResolve } from '../shared/resolve';
 import { DataSharingService } from '../shared/data-sharing';
 
 // Add the SecureHttpClient to this modules (Injectable)
@@ -36,8 +36,6 @@ import { QuestionAnswerService } from './question-answer.service';
   exports: [QuestionAnswerComponent],
   providers: [
     HttpClient,
-    StatesResolve,
-    SalePersonsResolve,
     QuestionAnswerService,
     DataSharingService,
     SecureHttpClient
