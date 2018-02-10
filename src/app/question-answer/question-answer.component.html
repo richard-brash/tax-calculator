@@ -5,7 +5,7 @@
       <div class="new-dollar-form">
         <div class="top-table-form">
           <div class="detils-form">
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">First Name *</label>
               <div class="input-wrap">
                 <input type="text" pInputText [(ngModel)]="qa.FirstName" class="input-css" name="firstName" #firstName="ngModel" required="true"
@@ -17,7 +17,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Last Name *</label>
               <div class="input-wrap">
                 <input type="text" [(ngModel)]="qa.LastName" class="input-css" name="lastName" #lastName="ngModel" required/>
@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Filling Status *</label>
               <div class="select-wrap">
                 <p-dropdown [options]="statusOptions" [(ngModel)]="qa._FilingStatus" placeholder="Select Status" optionLabel="name" name="FilingStatus"
@@ -41,7 +41,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">State *</label>
               <div class="select-wrap">
                 <p-dropdown [options]="stateOptions" [(ngModel)]="qa.State" placeholder="Select State" optionLabel="name" name="State" #State="ngModel"
@@ -54,7 +54,7 @@
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">What is your taxable income? *</label>
               <div class="input-wrap">
                 <p-spinner size="30" [(ngModel)]="qa._TaxableIncome" [min]="0" [step]="1000" name="TaxableIncome" #TaxableIncome="ngModel"
@@ -66,14 +66,14 @@
                 </div>
               </div>
             </div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Do you currently own a business? </label>
               <div class="select-wrap switch-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._BusinessOwner" name="BusinessOwner" #BusinessOwner="ngModel"></p-inputSwitch>
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Who invited you to take this survey?</label>
               <div class="select-wrap">
                 <p-dropdown [options]="salePersons" optionLabel="FullName" [(ngModel)]="qa._SalePerson" placeholder="Select the Person"
@@ -97,13 +97,13 @@
       <div class="new-dollar-form">
         <div class="top-table-form">
           <div class="detils-form">
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Are you and/or your spouse the sole owner(s) of the business?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._SoleOwner" name="SoleOwner" #SoleOwner="ngModel"></p-inputSwitch>
               </div>
             </div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <div *ngIf="!qa._SoleOwner">
                 <label class="label">What is the percentage of ownership?</label>
                 <div class="select-wrap">
@@ -118,7 +118,7 @@
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <div>
                 <label class="label">What type of business are you in?</label>
                 <div class="input-wrap">
@@ -132,7 +132,7 @@
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">How many children do you claim on your tax return?</label>
               <div class="input-wrap">
                 <p-spinner size="30" [(ngModel)]="qa._NumberOfChildren" [min]="0" [max]="6" name="NumberOfChildren" #NumberOfChildren="ngModel"
@@ -144,7 +144,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <div *ngIf="qa._NumberOfChildren > 0">
                 <label class="label">Can your children work in your business?</label>
                 <div class="select-wrap">
@@ -153,7 +153,7 @@
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">How much do you spend on domestic vacations annually?</label>
               <div class="input-wrap">
                 <p-spinner size="30" [(ngModel)]="qa._VacationAmount" [min]="0" [step]="1000" name="VacationAmount" #VacationAmount="ngModel"
@@ -165,33 +165,33 @@
                 </div>
               </div>
             </div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Do you have a health savings account?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._HSA" name="HSA" #HSA="ngModel"></p-inputSwitch>
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Do you have a home office?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.HomeOffice" name="HomeOffice" #HomeOffice="ngModel"></p-inputSwitch>
               </div>
             </div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Do you have a company wide retirement plan?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._CompanyRetirementPlan" name="CompanyRetirementPlan" #CompanyRetirementPlan="ngModel"></p-inputSwitch>
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Have you purchased a building other than a personal residence or vacation home in the last 5 years?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._BuildingPurchase" name="BuildingPurchase" #BuildingPurchase="ngModel"></p-inputSwitch>
               </div>
             </div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <div *ngIf="qa._BuildingPurchase">
                 <label class="label">Estimated cost</label>
                 <div class="input-wrap">
@@ -205,13 +205,13 @@
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Are you current on your tax obligations including filing and payments?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._CurrentOnTaxes" name="CurrentOnTaxes" #CurrentOnTaxes="ngModel"></p-inputSwitch>
               </div>
             </div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">How are you keeping your books?</label>
               <div class="select-wrap">
                 <p-dropdown [options]="keepBooksOptions" [(ngModel)]="qa._BookKeepingMethod" placeholder="Select" name="BookKeepingMethod"
@@ -224,7 +224,7 @@
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Are your books current?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._BooksCurrent" name="BooksCurrent" #BooksCurrent="ngModel"></p-inputSwitch>
@@ -241,14 +241,14 @@
       <div class="new-dollar-form">
         <div class="top-table-form">
           <div class="detils-form">
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Do you have life insurance?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._LifeInsurance" name="LifeInsurance" #LifeInsurance="ngModel"
                   require="true"></p-inputSwitch>
               </div>
             </div>
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Do you have a living trust?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._LivingTrust" name="LivingTrust" #LivingTrust="ngModel" require="true"></p-inputSwitch>
@@ -256,7 +256,7 @@
             </div>            
             <div class="clearfix"></div>
 
-            <div class="form-group-wrap">
+            <div class="ui-g-12 ui-md-6">
               <label class="label">Do you have a will?</label>
               <div class="select-wrap">
                 <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._HaveWill" name="HaveWill" #HaveWill="ngModel" require="true"></p-inputSwitch>
