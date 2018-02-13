@@ -2,7 +2,7 @@
   <wizard-step [title]="'Personal Detail'" [isValid]="personalForm.form.valid">
     <h3>Personal Details</h3>
     <form #personalForm="ngForm">
-      <div class="new-dollar-form">
+      <!-- <div class="new-dollar-form">
           <div class="row">
           <div class="col-md-6 question">
               <label class="label">First Name *</label>
@@ -88,9 +88,9 @@
           <div class="col-md-6">
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <!-- <div class="new-dollar-form">
+      <div class="new-dollar-form">
         <div class="top-table-form">
           <div class="detils-form">
             <div class="ui-g-12 ui-md-6">
@@ -171,7 +171,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
     </form>
   </wizard-step>
   <wizard-step [title]="'Business Ownership Questions'" [hidden]="!qa._BusinessOwner" [isValid]="businessForm.form.valid">
