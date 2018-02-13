@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //  Add the HttpModule to make API calls to the backend.
 import { HttpModule } from '@angular/http';
@@ -23,6 +24,7 @@ import { ResultModule } from './result/result.module';
     FormsModule,
     HttpClientModule,
     HttpModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     QuestionAnswerModule,
     ResultModule

@@ -99,7 +99,7 @@ export class QuestionAnswerComponent implements OnInit {
     });
   }
 
-  onStep3Next() {
+  calculateTax() {
     this.qa['_FilingStatus'] = this.qa['_FilingStatus']['id'];
     this.qa['State'] = this.qa['State']['code'];
     this.jsonStr = JSON.stringify(this.qa);

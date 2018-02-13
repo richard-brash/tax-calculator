@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient } from '@angular/common/http';
+import { MatStepperModule } from '@angular/material/stepper';
+
 import { DropdownModule, CalendarModule, SpinnerModule, AutoCompleteModule } from 'primeng/primeng';
-import { FormWizardModule } from 'angular2-wizard';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { KeyFilterModule } from 'primeng/keyfilter';
 
@@ -12,7 +13,7 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 import { DataSharingService } from '../shared/data-sharing';
 
 // Add the SecureHttpClient to this modules (Injectable)
-import {SecureHttpClient} from '../shared/secure-http-client';
+import { SecureHttpClient } from '../shared/secure-http-client';
 
 import { QuestionAnswerComponent } from './question-answer.component';
 import { QuestionAnswerRoutingModule } from './question-answer-routing.module';
@@ -22,8 +23,9 @@ import { QuestionAnswerService } from './question-answer.service';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
-    FormWizardModule,
+    MatStepperModule,
     DropdownModule,
     CalendarModule,
     SpinnerModule,

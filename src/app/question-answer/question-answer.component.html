@@ -1,95 +1,7 @@
-<form-wizard>
-  <wizard-step [title]="'Personal Detail'" [isValid]="personalForm.form.valid">
+<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="personalForm">
     <h3>Personal Details</h3>
     <form #personalForm="ngForm">
-      <!-- <div class="new-dollar-form">
-          <div class="row">
-          <div class="col-md-6 question">
-              <label class="label">First Name *</label>
-              <div class="input-wrap">
-                <input type="text" pInputText [(ngModel)]="qa.FirstName" class="input-css" name="firstName" #firstName="ngModel" required="true"
-                />
-              </div>
-              <div *ngIf="firstName.invalid">
-                <div class="error-alert" *ngIf="!firstName.pristine && firstName.errors.required">
-                  First Name is required.
-                </div>
-              </div>
-          </div>
-          <div class="col-md-6 question">
-              <label class="label">Last Name *</label>
-              <div class="input-wrap">
-                <input type="text" [(ngModel)]="qa.LastName" class="input-css" name="lastName" #lastName="ngModel" required/>
-              </div>
-              <div *ngIf="lastName.invalid">
-                <div class="error-alert" *ngIf="!lastName.pristine && lastName.errors.required">
-                  Last Name is required.
-                </div>
-              </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 question">
-              <label class="label">Filling Status *</label>
-              <div class="select-wrap">
-                <p-dropdown [options]="statusOptions" [(ngModel)]="qa._FilingStatus" placeholder="Select Status" optionLabel="name" name="FilingStatus"
-                  #FilingStatus="ngModel" required="true"></p-dropdown>
-              </div>
-              <div *ngIf="FilingStatus.invalid">
-                <div class="error-alert" *ngIf="!FilingStatus.pristine &&  FilingStatus.errors.required">
-                  Select Filling Status.
-                </div>
-              </div>
-          </div>
-          <div class="col-md-6 question">
-            <div class="form-group-wrap">
-              <label class="label">State *</label>
-              <div class="select-wrap">
-                <p-dropdown [options]="stateOptions" [(ngModel)]="qa.State" placeholder="Select State" optionLabel="name" name="State" #State="ngModel"
-                  required="true"></p-dropdown>
-              </div>
-              <div *ngIf="State.invalid">
-                <div class="error-alert" *ngIf="!State.pristine &&  State.errors.required">
-                  Select State.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 question">
-              <label class="label">What is your taxable income? *</label>
-              <div class="input-wrap">
-                <p-spinner size="30" [(ngModel)]="qa._TaxableIncome" [min]="0" [step]="1000" name="TaxableIncome" #TaxableIncome="ngModel"
-                  require="true"></p-spinner>
-              </div>
-              <div *ngIf="TaxableIncome.invalid">
-                <div class="error-alert" *ngIf="!TaxableIncome.pristine &&  TaxableIncome.errors.required">
-                  Taxable Income is required.
-                </div>
-              </div>
-          </div>
-          <div class="col-md-6 question">
-              <label class="label">Do you currently own a business? </label>
-              <div class="select-wrap switch-wrap">
-                <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._BusinessOwner" name="BusinessOwner" #BusinessOwner="ngModel"></p-inputSwitch>
-              </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 question">
-              <label class="label">Who invited you to take this survey?</label>
-              <div class="select-wrap">
-                <p-dropdown [options]="salePersons" optionLabel="FullName" [(ngModel)]="qa._SalePerson" placeholder="Select the Person" name="SalePerson"
-                  #SalePerson="ngModel" required="false">
-                </p-dropdown>
-              </div>
-          </div>
-          <div class="col-md-6">
-          </div>
-        </div>
-      </div> -->
-
       <div class="new-dollar-form">
         <div class="top-table-form">
           <div class="detils-form">
@@ -171,10 +83,13 @@
             </div>
           </div>
         </div>
+        <div class="card-footer">
+          <button type="submit" [disabled]="!personalForm.valid" class="btn-secondary" mat-button matStepperNext>Next</button>
+        </div>
       </div>
     </form>
-  </wizard-step>
-  <wizard-step [title]="'Business Ownership Questions'" [hidden]="!qa._BusinessOwner" [isValid]="businessForm.form.valid">
+  </mat-step>
+  <mat-step [stepControl]="businessForm" *ngIf="qa._BusinessOwner">
     <h3>Business Ownership Details</h3>
     <form #businessForm="ngForm">
       <div class="new-dollar-form">
@@ -315,10 +230,14 @@
             </div>
           </div>
         </div>
+        <div class="card-footer">
+          <button class="btn-secondary" mat-button matStepperPrevious>Prev</button>
+          <button class="btn-secondary" [disabled]="!businessForm.valid" mat-button matStepperNext>Next</button>
+        </div>
       </div>
     </form>
-  </wizard-step>
-  <wizard-step [title]="'Extra Questions'" [isValid]="extraForm.form.valid" (onComplete)="onStep3Next($event)">
+  </mat-step>
+  <mat-step [stepControl]="extraForm">
     <h3>Extra Questions</h3>
     <form #extraForm="ngForm">
       <div class="new-dollar-form">
@@ -347,7 +266,11 @@
             </div>
           </div>
         </div>
+        <div class="card-footer">
+          <button class="btn-secondary" mat-button matStepperPrevious>Prev</button>
+          <button class="btn-secondary" (click)="calculateTax()" [disabled]="!extraForm.valid" mat-button matStepperNext>Next</button>
+        </div>
       </div>
     </form>
-  </wizard-step>
-</form-wizard>
+  </mat-step>
+</mat-horizontal-stepper>
