@@ -6,7 +6,8 @@
     "ng": "ng",
     "startng": "ng serve",
     "start": "node ./bin/www",
-    "build": "ng build --prod",
+    "_build": "ng build",
+    "build": "ng build --output-path=public/ --env=prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
