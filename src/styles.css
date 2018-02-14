@@ -8,6 +8,7 @@
 /* You can add global styles to this file, and also import other style files */
 body{margin: 0;}
 .main_container{width: 100%;}
+.content_wrapper{padding-top: 15px;padding-bottom: 15px;}
 .margin-top-15{margin-top: 15px;}
 .text-center{text-align: center;}
 *{margin:0; padding:0;}
@@ -33,6 +34,7 @@ button:focus{outline-offset:0; outline:0;}
 .top-table table td.inr-info-sale table tbody td{width:25%;}
 
 .label-css{font-weight: 500;color: #666; font-size: 12px; font-family: 'Roboto'; margin:0 5px 0 0; text-align: right; padding: 0; display:inline-block; vertical-align:middle; width: 30%;}
+.detils-form .label{color:#635723;}
 .input-wrap{position:relative;display:inline-block;background:#fff;border:1px solid #DDDDDD;width:65%;border-radius: 50px !important;}
 .input-wrap.datepicker-input-wrap{background:transparent;border:none;}
 .input-icon{padding-left:36px;}
@@ -178,13 +180,14 @@ body{background: #f7f7f7;}
     font-size: 20px;
     margin-bottom: 0px;
     text-align: center;
-    background: #eee;
+    background: #E2DBC9;
     padding: 15px 0;
     font-weight: 600;
     text-transform: uppercase;
-    color: #333;}
+    color: #635723;
+}
 .card-block .new-dollar-form,
-.mat-horizontal-stepper-content .new-dollar-form{padding: 30px 15px;background: #fff;}
+.mat-horizontal-stepper-content .new-dollar-form{padding:15px;background: #fff;}
 .detils-form .form-group-wrap {width: 50%;float: left;padding: 0 15px;margin-bottom: 15px;}
 .detils-form {display: inline-block;width: 100%;}
 .detils-form .form-group-wrap label.label {display: inline-block;width: 100%;margin-bottom: 5px;font-size: 16px;color: #000;}
@@ -234,4 +237,93 @@ body{background: #f7f7f7;}
 .result_wrapper p .result-content {color: #999;font-size: 20px;font-weight: normal; }
 @media(max-width:380px){
     .result_wrapper p span:first-child{width: 100%;text-align: left;}
+}
+.mat-horizontal-content-container{margin: 0 auto !important;}
+
+.site-header {
+    min-height: 180px;
+}
+
+.site-header .wrap {
+    position: relative;
+}
+
+.title-area {
+    display: none;
+    width: 400px;
+}
+
+.header-image .title-area {
+    max-width: 400px;
+}
+
+.header-image .site-title>a {
+    min-height: 150px;
+}
+
+.logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 0px;
+}
+.logo a{display: inline-block}
+.logo img {height: 175px;}
+
+.site-header {
+    display: inline-block;
+    width: 100%;
+    background: url('http://69.16.227.224/~taxsavin/wp-content/uploads/2016/08/headerbg.png') no-repeat;
+    background-size: cover;
+}
+.site-header > .wrap {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.site-header .widget-area {
+	float: right;
+	text-align: right;
+	width: 800px;
+}
+.info_header {
+    color: #635723;
+}
+
+.info_header .social {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.info_header .tel {
+    font-size: 115%;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 1340px) {
+    .content,
+	.site-header .widget-area {
+		width: 800px;
+	}
+}
+@media only screen and (max-width: 1200px) {
+    .content,
+	.site-header .widget-area {
+		width: 620px;
+	}
+}
+@media only screen and (max-width: 1023px) {
+    .content,
+	.site-header .widget-area {
+        width: 100%;
+        text-align: center;
+    }
+    .logo {
+        width: 100%;
+        position: static;
+        text-align: center;
+    }
+    .logo img{width: 100%;height: auto;}
+    .info_header .social ul {text-align: center !important;}
+}
+@media only screen and (max-width: 768px) {
 }
