@@ -452,6 +452,7 @@ var QuestionAnswerModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_secure_http_client__ = __webpack_require__("../../../../../src/app/shared/secure-http-client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -464,6 +465,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var QuestionAnswerService = /** @class */ (function () {
     function QuestionAnswerService(httpClient, secureHttpClient) {
         this.httpClient = httpClient;
@@ -473,14 +475,14 @@ var QuestionAnswerService = /** @class */ (function () {
         return this.httpClient.get('/assets/json/statesObj.json');
     };
     QuestionAnswerService.prototype.calculateTax = function (data) {
-        var url = 'https://rbm-tsp-calculator-api.azurewebsites.net/api/calculate';
+        var url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl + 'calculate';
         return this.secureHttpClient.post(url, data)
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     QuestionAnswerService.prototype.getSalesPeople = function () {
-        var url = 'https://rbm-tsp-calculator-api.azurewebsites.net/api/salespeople';
+        var url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl + 'salespeople';
         return this.secureHttpClient.get(url)
             .toPromise()
             .then(function (res) { return res.json(); })
@@ -887,7 +889,8 @@ var SecureHttpClient = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
-    production: true
+    production: true,
+    apiUrl: 'https://rbm-tsp-calculator-api.azurewebsites.net/api/'
 };
 
 

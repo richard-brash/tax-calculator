@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SecureHttpClient } from '../shared/secure-http-client';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class QuestionAnswerService {
@@ -15,7 +16,7 @@ export class QuestionAnswerService {
     }
 
     calculateTax(data) {
-        const url = 'https://rbm-tsp-calculator-api.azurewebsites.net/api/calculate';
+        const url = environment.apiUrl + 'calculate';
         return this.secureHttpClient.post(url, data)
             .toPromise()
             .then(res => res.json() )
@@ -23,7 +24,7 @@ export class QuestionAnswerService {
     }
 
     getSalesPeople() {
-        const url = 'https://rbm-tsp-calculator-api.azurewebsites.net/api/salespeople';
+        const url = environment.apiUrl + 'salespeople';
         return this.secureHttpClient.get(url)
             .toPromise()
             .then(res => res.json() )
