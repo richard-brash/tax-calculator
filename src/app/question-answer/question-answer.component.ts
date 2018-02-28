@@ -85,7 +85,7 @@ export class QuestionAnswerComponent implements OnInit {
 
     this.questionAnswerService.getSalesPeople().then(data => {
       let sps = [];
-      data.Data.forEach(salePerson => {
+      data.forEach(salePerson => {
         sps.push(
           {
             ID: salePerson.ID,

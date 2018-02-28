@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  // apiUrl: 'http://localhost:5000/api/'
-  apiUrl: 'https://rbm-tsp-calculator-api.azurewebsites.net/api/'
+  apiUrl: 'api/'
+  // apiUrl: 'https://rbm-tsp-calculator-api.azurewebsites.net/api/'
 };

@@ -326,7 +326,7 @@ var QuestionAnswerComponent = /** @class */ (function () {
         this.questionAnswerService.getStates().subscribe(function (data) { return _this.stateOptions = data; });
         this.questionAnswerService.getSalesPeople().then(function (data) {
             var sps = [];
-            data.Data.forEach(function (salePerson) {
+            data.forEach(function (salePerson) {
                 sps.push({
                     ID: salePerson.ID,
                     FirstName: salePerson.FirstName,
@@ -483,6 +483,7 @@ var QuestionAnswerService = /** @class */ (function () {
     };
     QuestionAnswerService.prototype.getSalesPeople = function () {
         var url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl + 'salespeople';
+        console.log(url);
         return this.secureHttpClient.get(url)
             .toPromise()
             .then(function (res) { return res.json(); })
@@ -890,7 +891,8 @@ var SecureHttpClient = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    apiUrl: 'https://rbm-tsp-calculator-api.azurewebsites.net/api/'
+    apiUrl: 'api/'
+    // apiUrl: 'https://rbm-tsp-calculator-api.azurewebsites.net/api/'
 };
 
 

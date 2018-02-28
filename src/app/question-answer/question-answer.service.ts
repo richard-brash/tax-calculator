@@ -25,6 +25,7 @@ export class QuestionAnswerService {
 
     getSalesPeople() {
         const url = environment.apiUrl + 'salespeople';
+        console.log(url);
         return this.secureHttpClient.get(url)
             .toPromise()
             .then(res => res.json() )
