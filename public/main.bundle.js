@@ -298,6 +298,14 @@ var QuestionAnswerComponent = /** @class */ (function () {
             { label: '95', value: '95' },
             { label: '100', value: '100' }
         ];
+        this.salePersons = [
+            {
+                ID: 0,
+                FirstName: 'Loading',
+                LastName: 'Data',
+                FullName: 'Loading Data'
+            }
+        ];
         this.qa = {
             '_TaxableIncome': 0,
             '_BusinessOwner': false,
@@ -323,7 +331,7 @@ var QuestionAnswerComponent = /** @class */ (function () {
     }
     QuestionAnswerComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.questionAnswerService.getStates().subscribe(function (data) { return _this.stateOptions = data; });
+        this.questionAnswerService.getStates().then(function (data) { return _this.stateOptions = data; });
         this.questionAnswerService.getSalesPeople().then(function (data) {
             var sps = [];
             data.forEach(function (salePerson) {
@@ -472,7 +480,11 @@ var QuestionAnswerService = /** @class */ (function () {
         this.secureHttpClient = secureHttpClient;
     }
     QuestionAnswerService.prototype.getStates = function () {
-        return this.httpClient.get('/assets/json/statesObj.json');
+        var url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl + 'states';
+        return this.secureHttpClient.get(url)
+            .toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
     };
     QuestionAnswerService.prototype.calculateTax = function (data) {
         var url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl + 'calculate';
@@ -483,7 +495,6 @@ var QuestionAnswerService = /** @class */ (function () {
     };
     QuestionAnswerService.prototype.getSalesPeople = function () {
         var url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl + 'salespeople';
-        console.log(url);
         return this.secureHttpClient.get(url)
             .toPromise()
             .then(function (res) { return res.json(); })

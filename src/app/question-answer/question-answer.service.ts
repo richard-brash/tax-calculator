@@ -12,7 +12,12 @@ export class QuestionAnswerService {
     ) { }
 
     getStates() {
-        return this.httpClient.get('/assets/json/statesObj.json');
+        const url = environment.apiUrl + 'states';
+        return this.secureHttpClient.get(url)
+            .toPromise()
+            .then(res => res.json() )
+            .catch(this.handleError);
+
     }
 
     calculateTax(data) {
@@ -25,7 +30,6 @@ export class QuestionAnswerService {
 
     getSalesPeople() {
         const url = environment.apiUrl + 'salespeople';
-        console.log(url);
         return this.secureHttpClient.get(url)
             .toPromise()
             .then(res => res.json() )

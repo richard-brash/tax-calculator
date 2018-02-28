@@ -48,7 +48,14 @@ export class QuestionAnswerComponent implements OnInit {
     { label: '100', value: '100' }
   ];
   stateOptions;
-  salePersons;
+  salePersons = [
+    {
+      ID: 0,
+      FirstName: 'Loading',
+      LastName: 'Data',
+      FullName: 'Loading Data'
+    }    
+  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -81,7 +88,7 @@ export class QuestionAnswerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.questionAnswerService.getStates().subscribe(data => this.stateOptions = data);
+    this.questionAnswerService.getStates().then(data => this.stateOptions = data);
 
     this.questionAnswerService.getSalesPeople().then(data => {
       let sps = [];
