@@ -26,6 +26,7 @@ export class QuestionAnswerComponent implements OnInit {
     { label: 'Do not have a regular method', value: 'Do not have a regular method' }
   ];
   ownPercentageOptions = [
+    { label: '00', value: '00' },
     { label: '05', value: '05' },
     { label: '10', value: '10' },
     { label: '15', value: '15' },
@@ -66,6 +67,7 @@ export class QuestionAnswerComponent implements OnInit {
     this.qa = {
       '_TaxableIncome': 0,
       '_BusinessOwner': false,
+      '_MarriedFilingJointly': false,
       '_SoleOwner': false,
       '_PercentOwnership': '05',
       '_NumberOfChildren': 0,
@@ -107,11 +109,11 @@ export class QuestionAnswerComponent implements OnInit {
   }
 
   calculateTax() {
-    this.qa['_FilingStatus'] = this.qa['_FilingStatus']['id'];
+    // this.qa['_FilingStatus'] = this.qa['_FilingStatus']['id'];
     this.qa['State'] = this.qa['State']['code'];
     this.jsonStr = JSON.stringify(this.qa);
-    this.jsonStr = this.jsonStr.replace(/false/g, '"No"');
-    this.jsonStr = this.jsonStr.replace(/true/g, '"Yes"');
+    // this.jsonStr = this.jsonStr.replace(/false/g, '"No"');
+    // this.jsonStr = this.jsonStr.replace(/true/g, '"Yes"');
     this.dataSharing.changeMessage(this.jsonStr);
     this.router.navigate(['/result']);
   }

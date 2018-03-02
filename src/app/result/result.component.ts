@@ -31,6 +31,7 @@ export class ResultComponent implements OnInit {
     private route: ActivatedRoute,
   ) {
     this.result = this.route.snapshot.data['calculatedResponse'];
+    console.log(this.result);
    }
 
   ngOnInit() {

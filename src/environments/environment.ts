@@ -6,5 +6,4 @@
 export const environment = {
   production: false,
   apiUrl: 'api/'
-  // apiUrl: 'https://rbm-tsp-calculator-api.azurewebsites.net/api/'
 };

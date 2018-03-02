@@ -29,7 +29,8 @@
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="ui-g-12 ui-md-6">
+
+            <!-- <div class="ui-g-12 ui-md-6">
               <label class="label">Filling Status *</label>
               <div class="select-wrap">
                 <p-dropdown [options]="statusOptions" [(ngModel)]="qa._FilingStatus" placeholder="Select Status" optionLabel="name" name="FilingStatus"
@@ -40,7 +41,14 @@
                   Select Filling Status.
                 </div>
               </div>
-            </div>
+            </div> -->
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Do you file your taxes jointly with your spouse? </label>
+              <div class="select-wrap switch-wrap">
+                <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._MarriedFilingJointly" name="MarriedFilingJointly" #MarriedFilingJointly="ngModel"></p-inputSwitch>
+              </div>
+            </div>            
+
             <div class="ui-g-12 ui-md-6">
               <label class="label">State *</label>
               <div class="select-wrap">
