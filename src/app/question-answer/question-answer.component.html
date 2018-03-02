@@ -30,18 +30,6 @@
             </div>
             <div class="clearfix"></div>
 
-            <!-- <div class="ui-g-12 ui-md-6">
-              <label class="label">Filling Status *</label>
-              <div class="select-wrap">
-                <p-dropdown [options]="statusOptions" [(ngModel)]="qa._FilingStatus" placeholder="Select Status" optionLabel="name" name="FilingStatus"
-                  #FilingStatus="ngModel" required="true"></p-dropdown>
-              </div>
-              <div *ngIf="FilingStatus.invalid">
-                <div class="error-alert" *ngIf="FilingStatus.errors.required">
-                  Select Filling Status.
-                </div>
-              </div>
-            </div> -->
             <div class="ui-g-12 ui-md-6">
               <label class="label">Do you file your taxes jointly with your spouse? </label>
               <div class="select-wrap switch-wrap">
@@ -65,7 +53,7 @@
             <div class="ui-g-12 ui-md-6">
               <label class="label">What is your taxable income? *</label>
               <div class="input-wrap">
-                <p-spinner size="30" [(ngModel)]="qa._TaxableIncome" [min]="0" [step]="1000" name="TaxableIncome" #TaxableIncome="ngModel"
+                <p-spinner size="30" [(ngModel)]="qa._TaxableIncome" [min]="1" [step]="1000" name="TaxableIncome" #TaxableIncome="ngModel"
                   require="true"></p-spinner>
               </div>
               <div *ngIf="TaxableIncome.invalid">
