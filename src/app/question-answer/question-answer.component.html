@@ -140,11 +140,17 @@
             </div>
             <div class="ui-g-12 ui-md-6">
               <div *ngIf="qa._NumberOfChildren > 0">
-                <label class="label">Can your children work in your business?</label>
-                <div class="select-wrap">
-                  <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._ChildrenWorkInBusiness" name="ChildrenWorkInBusiness" #ChildrenWorkInBusiness="ngModel"></p-inputSwitch>
+                <label class="label">How many of your children work in your business?</label>
+                <div class="input-wrap">
+                  <p-spinner size="30" [(ngModel)]="qa._ChildrenWorkInBusiness" [min]="0" [max]="6" name="ChildrenWorkInBusiness" #ChildrenWorkInBusiness="ngModel"
+                    require="true"></p-spinner>
                 </div>
-              </div>
+                <div *ngIf="ChildrenWorkInBusiness.invalid">
+                  <div class="error-alert" *ngIf="ChildrenWorkInBusiness.errors.required">
+                    Select no. of Children.
+                  </div>
+                </div>
+                </div>
             </div>
             <div class="clearfix"></div>
             <div class="ui-g-12 ui-md-6">
@@ -169,7 +175,7 @@
             <div class="ui-g-12 ui-md-6">
               <label class="label">Do you have a home office?</label>
               <div class="select-wrap">
-                <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa.HomeOffice" name="HomeOffice" #HomeOffice="ngModel"></p-inputSwitch>
+                <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._HomeOffice" name="HomeOffice" #HomeOffice="ngModel"></p-inputSwitch>
               </div>
             </div>
             <div class="ui-g-12 ui-md-6">

@@ -22,7 +22,7 @@ export class QuestionAnswerComponent implements OnInit {
   keepBooksOptions = [
     { label: 'Quickbooks', value: 'Quickbooks' },
     { label: 'Excel', value: 'Excel' },
-    { label: 'Other accounting softward', value: 'Other accounting softward' },
+    { label: 'Other accounting software', value: 'Other accounting software' },
     { label: 'Do not have a regular method', value: 'Do not have a regular method' }
   ];
   ownPercentageOptions = [
@@ -71,7 +71,8 @@ export class QuestionAnswerComponent implements OnInit {
       '_SoleOwner': false,
       '_PercentOwnership': '05',
       '_NumberOfChildren': 0,
-      '_ChildrenWorkInBusiness': false,
+      '_ChildrenWorkInBusiness': 0,
+      // '_ChildrenWorkInBusiness': false,
       '_VacationAmount': 0,
       '_HSA': false,
       '_HomeOffice': false,

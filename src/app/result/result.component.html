@@ -11,3 +11,195 @@
       </div>
   </div>
 </div>
+
+<div class="card">
+  <div class="card-block">
+      <h3>Analysis</h3>
+      <div class="result_wrapper">
+        <p>
+          <span>Original Tax Forecast : </span> <span class="result-content">{{result.original.TaxForecast | currency:'USD':true:'1.2-2'}}</span>
+        </p>
+        <p>
+          <span>Revised Tax Forecast :</span> <span class="result-content">{{result.lowEnd.TaxForecast | currency:'USD':true:'1.2-2'}} --> {{result.highEnd.TaxForecast | currency:'USD':true:'1.2-2'}}</span>
+        </p>
+        <p>
+          <span>Annual Savings :</span> <span class="result-content">{{result.lowEnd.AnnualSavings | currency:'USD':true:'1.2-2'}} --> {{result.highEnd.AnnualSavings | currency:'USD':true:'1.2-2'}}</span>
+        </p>
+        <p>
+          <span>GPP Funding :</span> <span class="result-content">{{result.lowEnd.GPPFunding | currency:'USD':true:'1.2-2'}} --> {{result.highEnd.GPPFunding | currency:'USD':true:'1.2-2'}}</span>
+        </p>
+        <p>
+          <span>Guarantee Discount :</span> <span class="result-content">5%</span>
+        </p>
+        <p>
+          <span>Annual Federal Savings :</span> <span class="result-content">{{result.lowEnd.AnnualFederalSavings | currency:'USD':true:'1.2-2'}} --> {{result.highEnd.AnnualFederalSavings | currency:'USD':true:'1.2-2'}}</span>
+        </p>
+
+        
+      </div>
+
+
+      
+  </div>
+</div>
+
+<!-- <div class="card">
+  <div class="card-block">
+      <h3>Analysis</h3>
+      <div class="ui-md-12">Savings Estimate</div>
+      <div class="clearfix"></div>
+      <div class="ui-md-3">
+        Line Item
+      </div>      
+      <div class="ui-md-3">
+        Original
+      </div>      
+      <div class="ui-md-3">
+        Low End
+      </div>            
+      <div class="ui-md-3">
+        High End
+      </div>                  
+      <div class="clearfix"></div>      
+      <div class="ui-md-3">
+        AGI
+      </div>      
+      <div class="ui-md-3">
+        {{result.original.AGI}}
+      </div>      
+      <div class="ui-md-3">
+        {{result.lowEnd.AGI}}
+      </div>            
+      <div class="ui-md-3">
+        {{result.highEnd.AGI}}
+      </div>                  
+      <div class="clearfix"></div>
+      <div class="ui-md-3">
+        Score Card
+      </div>      
+      <div class="ui-md-3">
+        {{result.original.ScoreCard}}
+      </div>      
+      <div class="ui-md-3">
+        {{result.lowEnd.ScoreCard}}
+      </div>            
+      <div class="ui-md-3">
+        {{result.highEnd.ScoreCard}}
+      </div>                  
+      <div class="clearfix"></div>   
+
+      <div class="ui-md-3">
+        Revised AGI
+      </div>      
+      <div class="ui-md-3">
+        {{result.original.RevisedAGI}}
+      </div>      
+      <div class="ui-md-3">
+        {{result.lowEnd.RevisedAGI}}
+      </div>            
+      <div class="ui-md-3">
+        {{result.highEnd.RevisedAGI}}
+      </div>                  
+      <div class="clearfix"></div>   
+      
+      <div class="ui-md-3">
+        Itemized Deductions
+      </div>      
+      <div class="ui-md-3">
+        {{result.original.ItemizedDeductions}}
+      </div>      
+      <div class="ui-md-3">
+        {{result.lowEnd.ItemizedDeductions}}
+      </div>            
+      <div class="ui-md-3">
+        {{result.highEnd.ItemizedDeductions}}
+      </div>                  
+      <div class="clearfix"></div>  
+
+      <div class="ui-md-3">
+        GPP
+      </div>      
+      <div class="ui-md-3">
+        {{result.original.GPP}}
+      </div>      
+      <div class="ui-md-3">
+        {{result.lowEnd.GPP}}
+      </div>            
+      <div class="ui-md-3">
+        {{result.highEnd.GPP}}
+      </div>                  
+      <div class="clearfix"></div>  
+            
+      <div class="ui-md-3">
+        Revised Itemized Deductions
+      </div>      
+      <div class="ui-md-3">
+        {{result.original.RevisedItemizedDeductions}}
+      </div>      
+      <div class="ui-md-3">
+        {{result.lowEnd.RevisedItemizedDeductions}}
+      </div>            
+      <div class="ui-md-3">
+        {{result.highEnd.RevisedItemizedDeductions}}
+      </div>                  
+      <div class="clearfix"></div>  
+            
+      <div class="ui-md-3">
+        Taxable Income
+      </div>      
+      <div class="ui-md-3">
+        {{result.original.TaxableIncome}}
+      </div>      
+      <div class="ui-md-3">
+        {{result.lowEnd.TaxableIncome}}
+      </div>            
+      <div class="ui-md-3">
+        {{result.highEnd.TaxableIncome}}
+      </div>                  
+      <div class="clearfix"></div>  
+            
+      <div class="ui-md-3">
+        20% QBI Deduction
+      </div>      
+      <div class="ui-md-3">
+        {{result.original.QBIDeduction}}
+      </div>      
+      <div class="ui-md-3">
+        {{result.lowEnd.QBIDeduction}}
+      </div>            
+      <div class="ui-md-3">
+        {{result.highEnd.QBIDeduction}}
+      </div>                  
+      <div class="clearfix"></div>  
+            
+      <div class="ui-md-3">
+        Revised Taxable Income
+      </div>      
+      <div class="ui-md-3">
+        {{result.original.RevisedTaxableIncome}}
+      </div>      
+      <div class="ui-md-3">
+        {{result.lowEnd.RevisedTaxableIncome}}
+      </div>            
+      <div class="ui-md-3">
+        {{result.highEnd.RevisedTaxableIncome}}
+      </div>                  
+      <div class="clearfix"></div>  
+
+      <div class="ui-md-3">
+        Tax Forecast
+      </div>      
+      <div class="ui-md-3">
+        {{result.original.TaxForecast}}
+      </div>      
+      <div class="ui-md-3">
+        {{result.lowEnd.TaxForecast}}
+      </div>            
+      <div class="ui-md-3">
+        {{result.highEnd.TaxForecast}}
+      </div>                  
+      <div class="clearfix"></div>  
+
+      
+  </div>
+</div> -->
