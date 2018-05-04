@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-result',
@@ -27,14 +27,19 @@ export class ResultComponent implements OnInit {
   ];
 
 
+  internal = false;
+
   constructor(
     private route: ActivatedRoute,
   ) {
     this.result = this.route.snapshot.data['calculatedResponse'];
+    this.internal = this.result.data.internal;
     console.log(this.result);
    }
 
   ngOnInit() {
+
+        
   }
 
 }

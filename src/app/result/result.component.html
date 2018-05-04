@@ -1,45 +1,316 @@
-<div class="card">
+<div *ngIf="internal" class="card">
   <div class="card-block">
-      <h3>Result</h3>
-      <div class="result_wrapper">
-        <p>
-          <span>Company : </span> <span class="result-content">{{result.company}}</span>
-        </p>
-        <p>
-          <span>Program : </span> <span class="result-content">{{result.program}}</span>
-        </p>
+    <h3>Result</h3>
+    <div class="result_wrapper">
+      <p>
+        <span>Company : </span>
+        <span class="result-content">{{result.company}}</span>
+      </p>
+      <p>
+        <span>Program : </span>
+        <span class="result-content">{{result.program}}</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="internal" class="card">
+  <div class="card-block">
+    <h3>Personal Details</h3>
+    <form #personalForm="ngForm">
+      <div class="new-dollar-form">
+        <div class="top-table-form">
+          <div class="detils-form">
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">First Name *</label>
+              <div class="input-wrap">
+                <input disabled type="text" pInputText [(ngModel)]="result.data.FirstName" class="input-css" name="firstName" #firstName="ngModel"
+                  required="true" />
+              </div>
+              <div *ngIf="!firstName.pristine && firstName.invalid">
+                <div class="error-alert" *ngIf="firstName.errors.required">
+                  First Name is required.
+                </div>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Last Name *</label>
+              <div class="input-wrap">
+                <input disabled type="text" [(ngModel)]="result.data.LastName" class="input-css" name="lastName" #lastName="ngModel" required/>
+              </div>
+              <div *ngIf="!lastName.pristine && lastName.invalid">
+                <div class="error-alert" *ngIf="lastName.errors.required">
+                  Last Name is required.
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Email *</label>
+              <div class="input-wrap">
+                <input disabled type="text" pInputText [(ngModel)]="result.data.Email" class="input-css" name="Email" #Email="ngModel" required="true"
+                />
+              </div>
+              <div *ngIf="!Email.pristine && Email.invalid">
+                <div class="error-alert" *ngIf="Email.errors.required">
+                  Email is required.
+                </div>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Phone Number *</label>
+              <div class="input-wrap">
+                <input disabled type="text" [(ngModel)]="result.data.Phone1" class="input-css" name="Phone1" #Phone1="ngModel" required/>
+                <!-- <p-inputMask [(ngModel)]="result.data.Phone1" mask="999-999-9999" name="Phone1" #Phone1="ngModel" required ></p-inputMask> -->
+              </div>
+              <div *ngIf="!Phone1.pristine && Phone1.invalid">
+                <div class="error-alert" *ngIf="Phone1.errors.required">
+                  Phone Number is required.
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Do you file your taxes jointly with your spouse? *</label>
+
+              <div class="select-wrap switch-wrap">
+                {{result.data._MarriedFilingJointly}}
+              </div>
+            </div>
+
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">State *</label>
+              <div class="select-wrap">
+                {{result.data.State}}
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">What is your taxable income? *</label>
+              <div class="input-wrap">
+                <p-spinner disabled size="30" [(ngModel)]="result.data._TaxableIncome" [min]="1" [step]="1000" name="TaxableIncome" #TaxableIncome="ngModel"
+                  require="true"></p-spinner>
+              </div>
+              <div *ngIf="!TaxableIncome.pristine && TaxableIncome.invalid">
+                <div class="error-alert" *ngIf="TaxableIncome.errors.required">
+                  Taxable Income is required.
+                </div>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Do you currently own a business? *</label>
+              <div class="select-wrap switch-wrap">
+                {{result.data._BusinessOwner}}
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div *ngIf="internal" class="ui-g-12 ui-md-6">
+              <label class="label">Who invited you to take this survey?</label>
+              <div class="select-wrap">
+                {{result.data._SalePerson.FullName}}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </form>
+
+    <h3 *ngIf="result.data._BusinessOwner" >Business Ownership Details</h3>
+    <form *ngIf="result.data._BusinessOwner" #businessForm="ngForm">
+      <div class="new-dollar-form">
+        <div class="top-table-form">
+          <div class="detils-form">
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Are you and/or your spouse the sole owner(s) of the business?</label>
+              <div class="select-wrap">
+                <p-inputSwitch disabled onLabel="Yes" offLabel="No" [(ngModel)]="result.data._SoleOwner" name="SoleOwner" #SoleOwner="ngModel"></p-inputSwitch>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+              <div *ngIf="!result.data._SoleOwner">
+                <label class="label">What is the percentage of ownership?</label>
+                <div class="select-wrap">
+                  {{result.data._PercentOwnership}}
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="ui-g-12 ui-md-6">
+              <div>
+                <label class="label">What type of business are you in?</label>
+                <div class="input-wrap">
+                  <input disabled type="text" [(ngModel)]="result.data._BusinessType" class="input-css" name="BusinessType" #BusinessType="ngModel"
+                    required/>
+                </div>
+                <div *ngIf="BusinessType.invalid">
+                  <div class="error-alert" *ngIf="BusinessType.errors.required">
+                    Enter type of business.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">How many children do you claim on your tax return?</label>
+              <div class="input-wrap">
+                <p-spinner disabled size="30" [(ngModel)]="result.data._NumberOfChildren" [min]="0" [max]="6" name="NumberOfChildren" #NumberOfChildren="ngModel"
+                  require="true"></p-spinner>
+              </div>
+              <div *ngIf="NumberOfChildren.invalid">
+                <div class="error-alert" *ngIf="NumberOfChildren.errors.required">
+                  Select no. of Children.
+                </div>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+              <div *ngIf="result.data._NumberOfChildren > 0">
+                <label class="label">How many of your children work in your business?</label>
+                <div class="input-wrap">
+                  <p-spinner disabled size="30" [(ngModel)]="result.data._ChildrenWorkInBusiness" [min]="0" [max]="6" name="ChildrenWorkInBusiness"
+                    #ChildrenWorkInBusiness="ngModel" require="true"></p-spinner>
+                </div>
+                <div *ngIf="ChildrenWorkInBusiness.invalid">
+                  <div class="error-alert" *ngIf="ChildrenWorkInBusiness.errors.required">
+                    Select no. of Children.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">How much do you spend on domestic vacations annually?</label>
+              <div class="input-wrap">
+                <p-spinner disabled size="30" [(ngModel)]="result.data._VacationAmount" [min]="0" [step]="1000" name="VacationAmount" #VacationAmount="ngModel"
+                  require="true"></p-spinner>
+              </div>
+              <div *ngIf="VacationAmount.invalid">
+                <div class="error-alert" *ngIf="VacationAmount.errors.required">
+                  Enter annual vacation amount.
+                </div>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Do you have a health savings account?</label>
+              <div class="select-wrap">
+                <p-inputSwitch disabled onLabel="Yes" offLabel="No" [(ngModel)]="result.data._HSA" name="HSA" #HSA="ngModel"></p-inputSwitch>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Do you have a home office?</label>
+              <div class="select-wrap">
+                <p-inputSwitch disabled onLabel="Yes" offLabel="No" [(ngModel)]="result.data._HomeOffice" name="HomeOffice" #HomeOffice="ngModel"></p-inputSwitch>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Do you have a company wide retirement plan?</label>
+              <div class="select-wrap">
+                <p-inputSwitch disabled onLabel="Yes" offLabel="No" [(ngModel)]="result.data._CompanyRetirementPlan" name="CompanyRetirementPlan"
+                  #CompanyRetirementPlan="ngModel"></p-inputSwitch>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Have you purchased a building other than a personal residence or vacation home in the last 5 years?</label>
+              <div class="select-wrap">
+                <p-inputSwitch disabled onLabel="Yes" offLabel="No" [(ngModel)]="result.data._BuildingPurchase" name="BuildingPurchase" #BuildingPurchase="ngModel"></p-inputSwitch>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+              <div *ngIf="result.data._BuildingPurchase">
+                <label class="label">Estimated cost</label>
+                <div class="input-wrap">
+                  <p-spinner disabled size="30" [(ngModel)]="result.data._BuildingCost" [min]="0" [step]="1000" name="BuildingCost" #BuildingCost="ngModel"
+                    require="true"></p-spinner>
+                </div>
+                <div *ngIf="BuildingCost.invalid">
+                  <div class="error-alert" *ngIf="BuildingCost.errors.required">
+                    Enter building cost.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Are you current on your tax obligations including filing and payments?</label>
+              <div class="select-wrap">
+                <p-inputSwitch disabled onLabel="Yes" offLabel="No" [(ngModel)]="result.data._CurrentOnTaxes" name="CurrentOnTaxes" #CurrentOnTaxes="ngModel"></p-inputSwitch>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">How are you keeping your books?</label>
+              <div class="select-wrap">
+                {{result.data._BookKeepingMethod}}
+
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Are your books current?</label>
+              <div class="select-wrap">
+                <p-inputSwitch disabled onLabel="Yes" offLabel="No" [(ngModel)]="result.data._BooksCurrent" name="BooksCurrent" #BooksCurrent="ngModel"></p-inputSwitch>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+    <h3>Extra Questions</h3>
+    <form #extraForm="ngForm">
+      <div class="new-dollar-form">
+        <div class="top-table-form">
+          <div class="detils-form">
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Do you have life insurance?</label>
+              <div class="select-wrap">
+                <p-inputSwitch disabled onLabel="Yes" offLabel="No" [(ngModel)]="result.data._LifeInsurance" name="LifeInsurance" #LifeInsurance="ngModel"
+                  require="true"></p-inputSwitch>
+              </div>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Do you have a living trust?</label>
+              <div class="select-wrap">
+                <p-inputSwitch disabled onLabel="Yes" offLabel="No" [(ngModel)]="result.data._LivingTrust" name="LivingTrust" #LivingTrust="ngModel"
+                  require="true"></p-inputSwitch>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Do you have a will?</label>
+              <div class="select-wrap">
+                <p-inputSwitch disabled onLabel="Yes" offLabel="No" [(ngModel)]="result.data._HaveWill" name="HaveWill" #HaveWill="ngModel"
+                  require="true"></p-inputSwitch>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
   </div>
 </div>
 
 <div class="card">
   <div class="card-block">
-      <h3>Analysis</h3>
-      <div class="result_wrapper">
-        <p>
-          <span>Original Tax Forecast : </span> <span class="result-content">{{result.original.TaxForecast | currency:'USD':true:'1.2-2'}}</span>
-        </p>
-        <p>
-          <span>Revised Tax Forecast :</span> <span class="result-content">{{result.lowEnd.TaxForecast | currency:'USD':true:'1.2-2'}} --> {{result.highEnd.TaxForecast | currency:'USD':true:'1.2-2'}}</span>
-        </p>
-        <p>
-          <span>Annual Savings :</span> <span class="result-content">{{result.lowEnd.AnnualSavings | currency:'USD':true:'1.2-2'}} --> {{result.highEnd.AnnualSavings | currency:'USD':true:'1.2-2'}}</span>
-        </p>
-        <p>
-          <span>GPP Funding :</span> <span class="result-content">{{result.lowEnd.GPPFunding | currency:'USD':true:'1.2-2'}} --> {{result.highEnd.GPPFunding | currency:'USD':true:'1.2-2'}}</span>
-        </p>
-        <p>
-          <span>Guarantee Discount :</span> <span class="result-content">5%</span>
-        </p>
-        <p>
-          <span>Annual Federal Savings :</span> <span class="result-content">{{result.lowEnd.AnnualFederalSavings | currency:'USD':true:'1.2-2'}} --> {{result.highEnd.AnnualFederalSavings | currency:'USD':true:'1.2-2'}}</span>
-        </p>
-
-        
-      </div>
-
-
-      
+    <h3>Analysis</h3>
+    <div class="result_wrapper">
+      <p>
+        <span>Original Tax Forecast : </span>
+        <span class="result-content">{{result.original.TaxForecast | currency:'USD':true:'1.2-2'}}</span>
+      </p>
+      <p>
+        <span>Revised Tax Forecast :</span>
+        <span class="result-content">{{result.lowEnd.TaxForecast | currency:'USD':true:'1.2-2'}} --> {{result.highEnd.TaxForecast | currency:'USD':true:'1.2-2'}}</span>
+      </p>
+      <p>
+        <span>Annual Reduction in Taxes :</span>
+        <span class="result-content">{{result.lowEnd.AnnualSavings | currency:'USD':true:'1.2-2'}} --> {{result.highEnd.AnnualSavings | currency:'USD':true:'1.2-2'}}</span>
+      </p>
+    </div>
   </div>
 </div>
 

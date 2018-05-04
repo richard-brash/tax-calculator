@@ -17,19 +17,9 @@ router.post('/', function(req, res, next) {
     var result = {};
     result = Calculator.calculate(data);
     
-    // var rates = Config.programConfig.filter(config => (
-    //     (config.marriedFilingJointly == data._MarriedFilingJointly) &&
-    //     (config.businessOwner == data._BusinessOwner)
-    // ));
-
-    // rates.forEach(rate => {
-    //     var ti = data._TaxableIncome;
-    //     if(eval(rate.eval)){
-    //         program = rate;
-    //     }
-    // });    
+    result.data = data;
     
-    // MakePDF.openPdf(program, res);
+
     res.json(result);
 
 });

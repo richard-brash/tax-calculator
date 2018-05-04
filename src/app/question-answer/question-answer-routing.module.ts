@@ -6,13 +6,19 @@ import { QuestionAnswerComponent } from './question-answer.component';
 @NgModule({
   imports: [
     RouterModule.forChild([
+      // {
+      //   path: '',
+      //   redirectTo: 'questionaire',
+      //   pathMatch: 'full',
+      // },
       {
         path: '',
         component: QuestionAnswerComponent,
-        // resolve: {
-        //   states : StatesResolve,
-        //   salePersons : SalePersonsResolve
-        // }
+      //   children: [
+      //     { path: '', component: QuestionAnswerComponent},
+      //     { path: ':id', component: QuestionAnswerComponent}
+      // ]
+      
       }
     ])
   ],

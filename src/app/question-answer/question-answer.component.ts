@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControlName } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { DataSharingService } from '../shared/data-sharing';
 import { QuestionAnswerService } from './question-answer.service';
 
@@ -25,6 +25,12 @@ export class QuestionAnswerComponent implements OnInit {
     { label: 'Other accounting software', value: 'Other accounting software' },
     { label: 'Do not have a regular method', value: 'Do not have a regular method' }
   ];
+
+  yesno = [
+    { name: 'Yes', value: true },
+    { name: 'No', value: false },
+  ];
+
   ownPercentageOptions = [
     { label: '00', value: '00' },
     { label: '05', value: '05' },
@@ -58,6 +64,8 @@ export class QuestionAnswerComponent implements OnInit {
     }    
   ];
 
+  internal = false;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -66,8 +74,8 @@ export class QuestionAnswerComponent implements OnInit {
   ) {
     this.qa = {
       '_TaxableIncome': 0,
-      '_BusinessOwner': false,
-      '_MarriedFilingJointly': false,
+      // '_BusinessOwner': false,
+      // '_MarriedFilingJointly': false,
       '_SoleOwner': false,
       '_PercentOwnership': '05',
       '_NumberOfChildren': 0,
@@ -79,18 +87,26 @@ export class QuestionAnswerComponent implements OnInit {
       '_BuildingPurchase': false,
       '_BuildingCost': 0,
       '_CompanyRetirementPlan': false,
-      '_CurrentOnTaxes': false,
+      '_CurrentOnTaxes': true,
       '_BooksCurrent': false,
       '_LifeInsurance': false,
       '_LivingTrust': false,
       '_HaveWill': false,
       '_SalePerson': ''
     };
-    // this.stateOptions = this.route.snapshot.data['states'];
-    // this.salePersons = this.route.snapshot.data['salePersons'].Data;
   }
 
   ngOnInit() {
+
+    // subscribe to router event
+    this.route.queryParams.subscribe((params: Params) => {
+      let internal = params['internal'];
+      if(internal && internal == 'yes'){
+        this.internal = true;
+      }
+    });
+
+
     this.questionAnswerService.getStates().then(data => this.stateOptions = data);
 
     this.questionAnswerService.getSalesPeople().then(data => {
@@ -112,10 +128,20 @@ export class QuestionAnswerComponent implements OnInit {
   calculateTax() {
     // this.qa['_FilingStatus'] = this.qa['_FilingStatus']['id'];
     this.qa['State'] = this.qa['State']['code'];
+
+    this.qa['_BusinessOwner'] = this.qa['_BusinessOwner']['value'];
+    this.qa['_MarriedFilingJointly'] = this.qa['_MarriedFilingJointly']['value'];    
+
+    this.qa['internal'] = this.internal;
+
     this.jsonStr = JSON.stringify(this.qa);
-    // this.jsonStr = this.jsonStr.replace(/false/g, '"No"');
-    // this.jsonStr = this.jsonStr.replace(/true/g, '"Yes"');
+
     this.dataSharing.changeMessage(this.jsonStr);
-    this.router.navigate(['/result']);
+    if(this.internal){
+      this.router.navigate(['/result', {internal: 'yes'}]);
+    } else {
+      this.router.navigate(['/result']);
+    }
+    
   }
 }

@@ -1,4 +1,4 @@
-<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+<mat-horizontal-stepper  [linear]="true" #stepper="matHorizontalStepper">
   <mat-step [stepControl]="personalForm">
     <h3>Personal Details</h3>
     <form #personalForm="ngForm">
@@ -11,7 +11,7 @@
                 <input type="text" pInputText [(ngModel)]="qa.FirstName" class="input-css" name="firstName" #firstName="ngModel" required="true"
                 />
               </div>
-              <div *ngIf="firstName.invalid">
+              <div *ngIf="!firstName.pristine && firstName.invalid">
                 <div class="error-alert" *ngIf="firstName.errors.required">
                   First Name is required.
                 </div>
@@ -22,7 +22,7 @@
               <div class="input-wrap">
                 <input type="text" [(ngModel)]="qa.LastName" class="input-css" name="lastName" #lastName="ngModel" required/>
               </div>
-              <div *ngIf="lastName.invalid">
+              <div *ngIf="!lastName.pristine && lastName.invalid">
                 <div class="error-alert" *ngIf="lastName.errors.required">
                   Last Name is required.
                 </div>
@@ -31,9 +31,41 @@
             <div class="clearfix"></div>
 
             <div class="ui-g-12 ui-md-6">
-              <label class="label">Do you file your taxes jointly with your spouse? </label>
+                <label class="label">Email *</label>
+                <div class="input-wrap">
+                  <input type="text" pInputText [(ngModel)]="qa.Email" class="input-css" name="Email" #Email="ngModel" required="true"
+                  />
+                </div>
+                <div *ngIf="!Email.pristine && Email.invalid">
+                  <div class="error-alert" *ngIf="Email.errors.required">
+                    Email is required.
+                  </div>
+                </div>
+              </div>
+              <div class="ui-g-12 ui-md-6">
+                <label class="label">Phone Number *</label>
+                <div class="input-wrap">
+                  <input type="text" [(ngModel)]="qa.Phone1" class="input-css" name="Phone1" #Phone1="ngModel" required/>
+                  <!-- <p-inputMask [(ngModel)]="qa.Phone1" mask="999-999-9999" name="Phone1" #Phone1="ngModel" required ></p-inputMask> -->
+                </div>
+                <div *ngIf="!Phone1.pristine && Phone1.invalid">
+                  <div class="error-alert" *ngIf="Phone1.errors.required">
+                    Phone Number is required.
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>            
+
+            <div class="ui-g-12 ui-md-6">
+              <label class="label">Do you file your taxes jointly with your spouse? *</label>
+
               <div class="select-wrap switch-wrap">
-                <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._MarriedFilingJointly" name="MarriedFilingJointly" #MarriedFilingJointly="ngModel"></p-inputSwitch>
+                <p-dropdown [options]="yesno" [(ngModel)]="qa._MarriedFilingJointly" placeholder="Select a Response" optionLabel="name" name="MarriedFilingJointly" #MarriedFilingJointly="ngModel" required="true" ></p-dropdown>
+                <div *ngIf="!MarriedFilingJointly.pristine && MarriedFilingJointly.invalid">
+                    <div class="error-alert" *ngIf="MarriedFilingJointly.errors.required">
+                      Response is required.
+                    </div>
+                  </div>                
               </div>
             </div>            
 
@@ -43,7 +75,7 @@
                 <p-dropdown [options]="stateOptions" [(ngModel)]="qa.State" placeholder="Select State" optionLabel="name" name="State" #State="ngModel"
                   required="true"></p-dropdown>
               </div>
-              <div *ngIf="State.invalid">
+              <div *ngIf="!State.pristine && State.invalid">
                 <div class="error-alert" *ngIf="State.errors.required">
                   Select State.
                 </div>
@@ -56,20 +88,26 @@
                 <p-spinner size="30" [(ngModel)]="qa._TaxableIncome" [min]="1" [step]="1000" name="TaxableIncome" #TaxableIncome="ngModel"
                   require="true"></p-spinner>
               </div>
-              <div *ngIf="TaxableIncome.invalid">
+              <div *ngIf="!TaxableIncome.pristine && TaxableIncome.invalid">
                 <div class="error-alert" *ngIf="TaxableIncome.errors.required">
                   Taxable Income is required.
                 </div>
               </div>
             </div>
             <div class="ui-g-12 ui-md-6">
-              <label class="label">Do you currently own a business? </label>
+              <label class="label">Do you currently own a business? *</label>              
               <div class="select-wrap switch-wrap">
-                <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._BusinessOwner" name="BusinessOwner" #BusinessOwner="ngModel"></p-inputSwitch>
+                <!-- <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="qa._BusinessOwner" name="BusinessOwner" #BusinessOwner="ngModel"></p-inputSwitch> -->
+                <p-dropdown [options]="yesno" [(ngModel)]="qa._BusinessOwner" placeholder="Select a Response" optionLabel="name" name="BusinessOwner" #BusinessOwner="ngModel" required="true" ></p-dropdown>
+                <div *ngIf="!BusinessOwner.pristine && BusinessOwner.invalid">
+                    <div class="error-alert" *ngIf="BusinessOwner.errors.required">
+                      Response is required.
+                    </div>
+                  </div>                
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="ui-g-12 ui-md-6">
+            <div *ngIf="internal" class="ui-g-12 ui-md-6">
               <label class="label">Who invited you to take this survey?</label>
               <div class="select-wrap">
                 <p-dropdown [options]="salePersons" optionLabel="FullName" [(ngModel)]="qa._SalePerson" placeholder="Select the Person" name="SalePerson"
@@ -85,7 +123,7 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="businessForm" *ngIf="qa._BusinessOwner">
+  <mat-step [stepControl]="businessForm" *ngIf="qa._BusinessOwner && qa._BusinessOwner.value == true">
     <h3>Business Ownership Details</h3>
     <form #businessForm="ngForm">
       <div class="new-dollar-form">
