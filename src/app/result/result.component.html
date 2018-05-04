@@ -10,6 +10,15 @@
         <span>Program : </span>
         <span class="result-content">{{result.program}}</span>
       </p>
+      <p>
+        <span>PDF : </span>
+        <span class="result-content">
+            <a class="clickable" (click)="downloadFile()">Download</a>    
+        </span>
+      </p>
+
+
+
     </div>
   </div>
 </div>
@@ -117,7 +126,7 @@
       </div>
     </form>
 
-    <h3 *ngIf="result.data._BusinessOwner" >Business Ownership Details</h3>
+    <h3 *ngIf="result.data._BusinessOwner">Business Ownership Details</h3>
     <form *ngIf="result.data._BusinessOwner" #businessForm="ngForm">
       <div class="new-dollar-form">
         <div class="top-table-form">

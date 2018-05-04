@@ -125,6 +125,10 @@ export class QuestionAnswerComponent implements OnInit {
     });
   }
 
+  downloadPDF(){
+    
+  }
+
   calculateTax() {
     // this.qa['_FilingStatus'] = this.qa['_FilingStatus']['id'];
     this.qa['State'] = this.qa['State']['code'];

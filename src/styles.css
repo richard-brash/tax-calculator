@@ -248,6 +248,11 @@ body{background: #f7f7f7;}
     position: relative;
 }
 
+.clickable {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .title-area {
     display: none;
     width: 400px;

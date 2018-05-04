@@ -17,10 +17,15 @@ router.post('/', function(req, res, next) {
     var result = {};
     result = Calculator.calculate(data);
     
-    result.data = data;
-    
+    result.data = data;   
 
-    res.json(result);
+    var pdf = MakePDF.Make(result, function(pdf){
+        result.pdf = pdf;
+        res.json(result);
+    });
+
+
+//    MakePDF.openPdf(result,res);
 
 });
 
