@@ -37,6 +37,7 @@ export class ResultComponent implements OnInit {
 
 
   downloadFile(){
+    
     window.open("data:application/pdf;base64," + encodeURI(this.result.pdf),'_blank');
   }
 

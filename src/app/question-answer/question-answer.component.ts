@@ -12,6 +12,9 @@ import { QuestionAnswerService } from './question-answer.service';
 export class QuestionAnswerComponent implements OnInit {
 
   qa;
+  testData;
+  testResult;
+
   jsonStr;
   statusOptions = [
     { id: 'S', name: 'Single' },
@@ -72,6 +75,7 @@ export class QuestionAnswerComponent implements OnInit {
     private dataSharing: DataSharingService,
     private questionAnswerService: QuestionAnswerService
   ) {
+
     this.qa = {
       '_TaxableIncome': 0,
       // '_BusinessOwner': false,
@@ -94,6 +98,35 @@ export class QuestionAnswerComponent implements OnInit {
       '_HaveWill': false,
       '_SalePerson': ''
     };
+
+    this.testData = {
+      'FirstName':'John',
+      'LastName':'Smith',
+      'State': 'MD',
+      'ContactId': 99999,
+      'Email':'john@smithco.com',
+
+      '_TaxableIncome': 987675,
+      '_BusinessOwner': false,
+      '_MarriedFilingJointly': false,
+      '_SoleOwner': false,
+      '_PercentOwnership': '05',
+      '_NumberOfChildren': 0,
+      '_ChildrenWorkInBusiness': 0,
+      '_VacationAmount': 0,
+      '_HSA': false,
+      '_HomeOffice': false,
+      '_BuildingPurchase': false,
+      '_BuildingCost': 0,
+      '_CompanyRetirementPlan': false,
+      '_CurrentOnTaxes': true,
+      '_BooksCurrent': false,
+      '_LifeInsurance': false,
+      '_LivingTrust': false,
+      '_HaveWill': false,
+      '_SalePerson': 'Drew Miles'
+    };    
+
   }
 
   ngOnInit() {
@@ -105,6 +138,12 @@ export class QuestionAnswerComponent implements OnInit {
         this.internal = true;
       }
     });
+
+
+    // this.questionAnswerService.calculateTax(this.testData).then(result => {
+    //   console.log('back with sample results');
+    //   this.testResult = result;
+    // })
 
 
     this.questionAnswerService.getStates().then(data => this.stateOptions = data);
@@ -125,8 +164,8 @@ export class QuestionAnswerComponent implements OnInit {
     });
   }
 
-  downloadPDF(){
-    
+  downloadFile(){    
+    window.open('data:application/pdf;base64,' + this.testResult.pdf,'_blank');
   }
 
   calculateTax() {
