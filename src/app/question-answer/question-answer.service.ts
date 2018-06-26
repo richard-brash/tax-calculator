@@ -12,7 +12,9 @@ export class QuestionAnswerService {
     ) { }
 
     getStates() {
+        console.log(environment);
         const url = environment.apiUrl + 'states';
+        console.log(url);
         return this.secureHttpClient.get(url)
             .toPromise()
             .then(res => res.json() )

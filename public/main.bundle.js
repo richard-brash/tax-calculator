@@ -537,7 +537,9 @@ var QuestionAnswerService = /** @class */ (function () {
         this.secureHttpClient = secureHttpClient;
     }
     QuestionAnswerService.prototype.getStates = function () {
+        console.log(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */]);
         var url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl + 'states';
+        console.log(url);
         return this.secureHttpClient.get(url)
             .toPromise()
             .then(function (res) { return res.json(); })
