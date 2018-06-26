@@ -140,10 +140,10 @@ export class QuestionAnswerComponent implements OnInit {
     });
 
 
-    // this.questionAnswerService.calculateTax(this.testData).then(result => {
-    //   console.log('back with sample results');
-    //   this.testResult = result;
-    // })
+    this.questionAnswerService.calculateTax(this.testData).then(result => {
+      console.log('back with sample results');
+        this.testResult = result;
+    })
 
 
     this.questionAnswerService.getStates().then(data => this.stateOptions = data);
