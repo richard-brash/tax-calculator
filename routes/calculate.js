@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var MakePDF = require('../lib/MakePDF');
+// var MakePDF = require('../lib/MakePDF');
 var Calculator = require('../lib/Calculator');
 var CreateContact = require('../lib/CreateContact');
 
@@ -19,19 +19,21 @@ router.post('/', function(req, res, next) {
     result = Calculator.calculate(data);
     
     result.data = data;   
+    
+    result.pdf = "Need to try creating the PDF on the client.";
 
+    res.json(result);
 
+    // var pdf = MakePDF.makeIt(result, function(pdf){
 
-    var pdf = MakePDF.makeIt(result, function(pdf){
+    //     result.pdf = pdf;
 
-        result.pdf = pdf;
+    //     CreateContact.createIt(result, function(){
 
-        CreateContact.createIt(result, function(){
-
-        })  
+    //     })  
         
-        res.json(result);
-    });
+    //     res.json(result);
+    // });
 
 
 
