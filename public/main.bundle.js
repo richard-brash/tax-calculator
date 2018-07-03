@@ -376,7 +376,6 @@ var QuestionAnswerComponent = /** @class */ (function () {
             }
         });
         this.questionAnswerService.calculateTax(this.testData).then(function (result) {
-            console.log('back with sample results');
             _this.testResult = result;
         });
         this.questionAnswerService.getStates().then(function (data) { return _this.stateOptions = data; });
@@ -537,9 +536,7 @@ var QuestionAnswerService = /** @class */ (function () {
         this.secureHttpClient = secureHttpClient;
     }
     QuestionAnswerService.prototype.getStates = function () {
-        console.log(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */]);
         var url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiUrl + 'states';
-        console.log(url);
         return this.secureHttpClient.get(url)
             .toPromise()
             .then(function (res) { return res.json(); })

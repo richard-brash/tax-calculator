@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var winston = require('winston');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
@@ -10,6 +11,22 @@ var calculate = require('./routes/calculate');
 var salespeople = require('./routes/salespeople');
 var states = require('./routes/states');
 var junk = require('./routes/junk');
+
+// winston.loggers.add('default', {
+//   console: {
+//       colorize: 'true',
+//       handleExceptions: true,
+//       json: false,
+//       level: 'silly',
+//       label: 'default',
+//   },
+//   file: {
+//       filename: 'temp/logs/taxcalculator/taxcalculator.log',
+//       level: 'silly',
+//       json: false,
+//       handleExceptions: true,
+//   },
+// });
 
 var app = express();
 
