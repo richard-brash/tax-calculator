@@ -14,6 +14,7 @@ export class QuestionAnswerComponent implements OnInit {
   qa;
   testData;
   testResult;
+  downloadUrl;
 
   jsonStr;
   statusOptions = [
@@ -142,6 +143,7 @@ export class QuestionAnswerComponent implements OnInit {
 
     this.questionAnswerService.calculateTax(this.testData).then(result => {
         this.testResult = result;
+        this.downloadUrl = 'data:application/pdf;base64,' + this.testResult.pdf;
     })
 
 
@@ -163,9 +165,39 @@ export class QuestionAnswerComponent implements OnInit {
     });
   }
 
-  downloadFile(){    
-    window.open('data:application/pdf;base64,' + this.testResult.pdf,'_blank');
+  b64toBlob(b64Data, contentType) {
+    contentType = contentType || '';
+    var sliceSize = 512;
+  
+    var byteCharacters = atob(b64Data);
+    var byteArrays = [];
+  
+    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      var slice = byteCharacters.slice(offset, offset + sliceSize);
+  
+      var byteNumbers = new Array(slice.length);
+      for (var i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+  
+      var byteArray = new Uint8Array(byteNumbers);
+  
+      byteArrays.push(byteArray);
+    }
+  
+    var blob = new Blob(byteArrays, {type: contentType});
+    return blob;
   }
+
+  downloadFile(){    
+
+    var url = 'data:application/pdf;base64,' + this.testResult.pdf;
+    fetch(url)
+    .then(res => res.blob())
+    .then(blob => window.URL.createObjectURL(blob))
+    .then(url => window.open(url, '_blank'));
+  }
+
 
   calculateTax() {
     // this.qa['_FilingStatus'] = this.qa['_FilingStatus']['id'];

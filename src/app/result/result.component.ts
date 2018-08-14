@@ -8,6 +8,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class ResultComponent implements OnInit {
   result;
+  
 
   TaxScale = [
     { key: 0, name: 'None Selected' },
@@ -35,10 +36,13 @@ export class ResultComponent implements OnInit {
     this.internal = this.result.data.internal;
   }
 
+  downloadFile(){    
 
-  downloadFile(){
-    
-    window.open("data:application/pdf;base64," + encodeURI(this.result.pdf),'_blank');
+    var url = 'data:application/pdf;base64,' + this.result.pdf;
+    fetch(url)
+    .then(res => res.blob())
+    .then(blob => window.URL.createObjectURL(blob))
+    .then(url => window.open(url, '_blank'));
   }
 
   ngOnInit() {
