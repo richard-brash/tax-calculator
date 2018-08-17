@@ -12,7 +12,7 @@ import { QuestionAnswerService } from './question-answer.service';
 export class QuestionAnswerComponent implements OnInit {
 
   qa;
-  testData;
+  // testData;
   testResult;
   downloadUrl;
 
@@ -100,33 +100,33 @@ export class QuestionAnswerComponent implements OnInit {
       '_SalePerson': ''
     };
 
-    this.testData = {
-      'FirstName':'John',
-      'LastName':'Smith',
-      'State': 'MD',
-      'ContactId': 99999,
-      'Email':'john@smithco.com',
+    // this.testData = {
+    //   'FirstName':'John',
+    //   'LastName':'Smith',
+    //   'State': 'MD',
+    //   'ContactId': 99999,
+    //   'Email':'john@smithco.com',
 
-      '_TaxableIncome': 987675,
-      '_BusinessOwner': false,
-      '_MarriedFilingJointly': false,
-      '_SoleOwner': false,
-      '_PercentOwnership': '05',
-      '_NumberOfChildren': 0,
-      '_ChildrenWorkInBusiness': 0,
-      '_VacationAmount': 0,
-      '_HSA': false,
-      '_HomeOffice': false,
-      '_BuildingPurchase': false,
-      '_BuildingCost': 0,
-      '_CompanyRetirementPlan': false,
-      '_CurrentOnTaxes': true,
-      '_BooksCurrent': false,
-      '_LifeInsurance': false,
-      '_LivingTrust': false,
-      '_HaveWill': false,
-      '_SalePerson': 'Drew Miles'
-    };    
+    //   '_TaxableIncome': 987675,
+    //   '_BusinessOwner': true,
+    //   '_MarriedFilingJointly': false,
+    //   '_SoleOwner': true,
+    //   '_PercentOwnership': '05',
+    //   '_NumberOfChildren': 0,
+    //   '_ChildrenWorkInBusiness': 0,
+    //   '_VacationAmount': 0,
+    //   '_HSA': false,
+    //   '_HomeOffice': false,
+    //   '_BuildingPurchase': false,
+    //   '_BuildingCost': 0,
+    //   '_CompanyRetirementPlan': false,
+    //   '_CurrentOnTaxes': true,
+    //   '_BooksCurrent': false,
+    //   '_LifeInsurance': false,
+    //   '_LivingTrust': false,
+    //   '_HaveWill': false,
+    //   '_SalePerson': 'Drew Miles'
+    // };    
 
   }
 
@@ -141,10 +141,10 @@ export class QuestionAnswerComponent implements OnInit {
     });
 
 
-    this.questionAnswerService.calculateTax(this.testData).then(result => {
-        this.testResult = result;
-        this.downloadUrl = 'data:application/pdf;base64,' + this.testResult.pdf;
-    })
+    // this.questionAnswerService.calculateTax(this.testData).then(result => {
+    //     this.testResult = result;
+    //     this.downloadUrl = 'data:application/pdf;base64,' + this.testResult.pdf;
+    // })
 
 
     this.questionAnswerService.getStates().then(data => this.stateOptions = data);
