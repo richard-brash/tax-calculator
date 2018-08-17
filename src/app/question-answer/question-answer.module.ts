@@ -9,7 +9,6 @@ import { DropdownModule, CalendarModule, SpinnerModule, AutoCompleteModule } fro
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { KeyFilterModule } from 'primeng/keyfilter';
 
-//import { StatesResolve, SalePersonsResolve } from '../shared/resolve';
 import { DataSharingService } from '../shared/data-sharing';
 
 // Add the SecureHttpClient to this modules (Injectable)

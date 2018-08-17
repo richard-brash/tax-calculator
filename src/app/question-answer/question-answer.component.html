@@ -118,8 +118,8 @@
             <div *ngIf="internal" class="ui-g-12 ui-md-6">
               <label class="label">Who invited you to take this survey?</label>
               <div class="select-wrap">
-                <p-dropdown [options]="salePersons" optionLabel="FullName" [(ngModel)]="qa._SalePerson" placeholder="Select the Person" name="SalePerson"
-                  #SalePerson="ngModel" required="false">
+                <p-dropdown [options]="salesPersons"  optionLabel="FullName" [(ngModel)]="qa._SalesPerson" placeholder="Select the Person" name="salesPerson"
+                  #salesPerson="ngModel" required="false">
                 </p-dropdown>
               </div>
             </div>

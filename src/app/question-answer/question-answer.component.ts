@@ -59,7 +59,7 @@ export class QuestionAnswerComponent implements OnInit {
     { label: '100', value: '100' }
   ];
   stateOptions;
-  salePersons = [
+  salesPersons = [
     {
       ID: 0,
       FirstName: 'Loading',
@@ -97,7 +97,7 @@ export class QuestionAnswerComponent implements OnInit {
       '_LifeInsurance': false,
       '_LivingTrust': false,
       '_HaveWill': false,
-      '_SalePerson': ''
+      '_SalesPerson': '...'
     };
 
     // this.testData = {
@@ -125,7 +125,7 @@ export class QuestionAnswerComponent implements OnInit {
     //   '_LifeInsurance': false,
     //   '_LivingTrust': false,
     //   '_HaveWill': false,
-    //   '_SalePerson': 'Drew Miles'
+    //   '_SalesPerson': 'Drew Miles'
     // };    
 
   }
@@ -151,17 +151,17 @@ export class QuestionAnswerComponent implements OnInit {
 
     this.questionAnswerService.getSalesPeople().then(data => {
       let sps = [];
-      data.forEach(salePerson => {
+      data.forEach(salesPerson => {
         sps.push(
           {
-            ID: salePerson.ID,
-            FirstName: salePerson.FirstName,
-            LastName: salePerson.LastName,
-            FullName: salePerson.FirstName + ' ' + salePerson.LastName
+            ID: salesPerson.ID,
+            FirstName: salesPerson.FirstName,
+            LastName: salesPerson.LastName,
+            FullName: salesPerson.FirstName + ' ' + salesPerson.LastName
           }
         );
       });
-      this.salePersons = sps;
+      this.salesPersons = sps;
     });
   }
 
@@ -205,6 +205,12 @@ export class QuestionAnswerComponent implements OnInit {
 
     this.qa['_BusinessOwner'] = this.qa['_BusinessOwner']['value'];
     this.qa['_MarriedFilingJointly'] = this.qa['_MarriedFilingJointly']['value'];    
+
+    this.qa['internal'] = this.internal;
+
+    if(this.qa['_SalesPerson'] != '...'){  
+      this.qa['_SalesPerson'] = this.qa['_SalesPerson']['FullName']
+    }
 
     this.qa['internal'] = this.internal;
 
